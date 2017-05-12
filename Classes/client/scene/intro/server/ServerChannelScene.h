@@ -3,12 +3,13 @@
 #define _SERVER_CHANNEL_SCENE_H_
 
 #include "cocos2d.h"
+#include "client\scene\intro\IntroSceneBase.h"
 
 USING_NS_CC;
 using namespace std;
 using namespace cocos2d::ui;
 
-class ServerChannelScene : public cocos2d::Layer
+class ServerChannelScene : public cocos2d::Layer, IntroSceneBase
 {
 public:
 	// there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -23,8 +24,5 @@ public:
 	~ServerChannelScene();
 
 	virtual void update(float dt);
-
-protected:
-	Vector<Sprite*> fomas;
 };
 #endif

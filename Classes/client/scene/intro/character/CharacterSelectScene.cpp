@@ -1,6 +1,7 @@
 #include "CharacterSelectScene.h"
 #include "engine\util\GameUtils.h"
 #include "client\scene\intro\login\LoginScene.h"
+#include "client\scene\intro\character\create\CharacterCreate1.h"
 #include "client\manager\CursorManager.h"
 #include "ui\UIButton.h"
 
@@ -22,14 +23,14 @@ bool CharacterSelectScene::init()
 		return false;
 	}
 
-	addChild(getSprite("stage1/bg_1-1.png"));
-	addChild(getSprite("stage1/long_1-1.png"));
+	addBackgroundToLayer(this);
 	
 	addChild(createButton(632, 600 - 530, "charselect/back_1", [this](Ref* sender) {
 		Director::getInstance()->replaceScene(LoginScene::createScene());
 	}));
 
 	addChild(createButton(15, 600 - 481, "charselect/create_1", [this](Ref* sender) {
+		Director::getInstance()->replaceScene(CharacterCreate1::createScene());
 	}));
 
 	addChild(createButton(15, 600 - 530, "charselect/delete_1", [this](Ref* sender) {
@@ -63,7 +64,6 @@ bool CharacterSelectScene::init()
 		addChild(getSprite("charselect/cloud_1-1.png", 90 + 234 * (i - 1), 600 - 279, Vec2::ANCHOR_TOP_LEFT));
 	}
 
-	CursorManager::Get()->setCursor(CURSOR_ATTACK);
 	CursorManager::Get()->addCursorToLayer(this);
 
 	return true;

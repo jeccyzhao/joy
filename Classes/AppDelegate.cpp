@@ -1,7 +1,7 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
 #include "client\scene\LoadingScene.h"
-#include "client\scene\intro\AdviceScene.h"
+#include "client\scene\intro\advice\AdviceScene.h"
 #include "client\scene\intro\login\LoginScene.h"
 #include "client\Client.h"
 #include "engine\util\GameUtils.h"

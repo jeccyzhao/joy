@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _CHARACTER_SELECT_SCENE_H_
-#define _CHARACTER_SELECT_SCENE_H_
+#ifndef _CHARACTER_CREATE1_SCENE_H_
+#define _CHARACTER_CREATE1_SCENE_H_
 
 #include "cocos2d.h"
 #include "client\scene\intro\IntroSceneBase.h"
@@ -9,7 +9,7 @@ USING_NS_CC;
 using namespace std;
 using namespace cocos2d::ui;
 
-class CharacterSelectScene : public cocos2d::Layer, IntroSceneBase
+class CharacterCreate1 : public cocos2d::Layer, IntroSceneBase
 {
 public:
 	// there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -19,7 +19,10 @@ public:
 	virtual bool init();
 
 	// implement the "static create()" method manually
-	CREATE_FUNC(CharacterSelectScene);
+	CREATE_FUNC(CharacterCreate1);
 
+	virtual void update(float dt);
+private:
+	Vector<Sprite*> fomas;
 };
 #endif

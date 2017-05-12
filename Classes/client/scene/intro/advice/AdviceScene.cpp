@@ -7,7 +7,6 @@ USING_NS_CC;
 
 AdviceScene::~AdviceScene()
 {
-	fomas.clear();
 }
 
 Scene* AdviceScene::createScene()
@@ -28,22 +27,9 @@ bool AdviceScene::init()
 
 	isSceneFaded = false;
 
-	addChild(getSprite("stage1/bg_1-1.png"));
-	addChild(getSprite("stage1/long_1-1.png"));
+	addBackgroundToLayer(this);
 	addChild(getSprite("stage1/advice_1-1.png"));
-
-	Sprite* foma1 = getSprite("stage1/piaoyun2_1-1.png", 550, 0);
-	fomas.pushBack(foma1);
-
-	Sprite* foma2 = getSprite("stage1/piaoyun3_1-1.png", 525, 0);
-	fomas.pushBack(foma2);
-
-	Sprite* foma3 = getSprite("stage1/piaoyun3_1-1.png", 100, 0);
-	fomas.pushBack(foma3);
-
-	addChild(foma1);
-	addChild(foma2);
-	addChild(foma3);
+	addFomasToLayer(this);
 
 	CursorManager::Get()->addCursorToLayer(this);
 	
@@ -58,14 +44,7 @@ bool AdviceScene::init()
 
 void AdviceScene::update(float dt)
 {
-	Sprite* foma1 = fomas.at(0);
-	foma1->setPosition(foma1->getPosition().x, foma1->getPosition().y + 1);
-
-	Sprite* foma2 = fomas.at(1);
-	foma2->setPosition(foma2->getPosition().x, foma2->getPosition().y + 0.8);
-
-	Sprite* foma3 = fomas.at(2);
-	foma3->setPosition(foma3->getPosition().x, foma3->getPosition().y + 1);
+	updateFomas(dt);
 }
 
 void AdviceScene::onMouseClick(Event *event)

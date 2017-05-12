@@ -3,11 +3,12 @@
 #define _ADVICE_SCENE_H_
 
 #include "cocos2d.h"
+#include "client\scene\intro\IntroSceneBase.h"
 
 USING_NS_CC;
 using namespace std;
 
-class AdviceScene : public cocos2d::Layer
+class AdviceScene : public cocos2d::Layer, IntroSceneBase
 {
 public:
 	~ AdviceScene();
@@ -26,7 +27,6 @@ public:
 protected:
 	void onSceneFaded(float dt);
 	void onMouseClick(Event *event);
-	Vector<Sprite*> fomas;
 private:
 	bool isSceneFaded;
 

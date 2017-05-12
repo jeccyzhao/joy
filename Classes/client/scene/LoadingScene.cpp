@@ -1,6 +1,7 @@
 #include "LoadingScene.h"
 #include "client\Client.h"
-#include "client\scene\intro\AdviceScene.h"
+#include "client\scene\intro\advice\AdviceScene.h"
+#include "client\scene\intro\character\create\CharacterCreate1.h"
 #include "client\manager\CursorManager.h"
 
 USING_NS_CC;
@@ -91,6 +92,6 @@ void LoadingScene::onLoadResourceCallback(Texture2D* texture, string res)
 		numLoadedRes = 0;
 		numTotalRes = 0;
 
-		Director::getInstance()->replaceScene(TransitionFade::create(1.0f, AdviceScene::createScene()));
+		Director::getInstance()->replaceScene(TransitionFade::create(1.0f, CharacterCreate1::createScene()));
 	}
 }

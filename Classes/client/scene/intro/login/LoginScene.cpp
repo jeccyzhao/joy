@@ -3,6 +3,7 @@
 #include "client\scene\intro\server\ServerChannelScene.h"
 #include "client\scene\intro\character\CharacterSelectScene.h"
 #include "client\manager\CursorManager.h"
+#include "client\Client.h"
 #include "ui\UIButton.h"
 #include "ui\UICheckBox.h"
 
@@ -28,27 +29,27 @@ bool LoginScene::init()
 	addChild(getSprite("stage1/logo_1-1.png", 282, 583, Vec2::ANCHOR_TOP_LEFT));
 	addChild(getSprite("Login/back_1-1.png"));
 
-	addChild(createButton(404, 600 - 389, "Login/ok_1", [this](Ref* sender) {
+	addChild(createButton(404, designResolutionSize.height - 389, "Login/ok_1", [this](Ref* sender) {
 		Director::getInstance()->replaceScene(CharacterSelectScene::createScene());
 	}));
-	addChild(createButton(490, 600 - 389, "Login/cancel_1", [this](Ref* sender) {
+	addChild(createButton(490, designResolutionSize.height - 389, "Login/cancel_1", [this](Ref* sender) {
 		Director::getInstance()->replaceScene(ServerChannelScene::createScene());
 	}));
 
-	addChild(createButton(314, 600 - 384, "Login/register_1"));
-	addChild(createButton(247, 600 - 384, "Login/getpwd_1"));
-	addChild(createButton(476, 600 - 346, "Login/softkbd_1"));
+	addChild(createButton(314, designResolutionSize.height - 384, "Login/register_1"));
+	addChild(createButton(247, designResolutionSize.height - 384, "Login/getpwd_1"));
+	addChild(createButton(476, designResolutionSize.height - 346, "Login/softkbd_1"));
 
 	auto checkbox = CheckBox::create("Login/checkbox_1-1.png", 
 									 "Login/checkbox_1-2.png", "Login/checkbox_1-2.png", "Login/checkbox_1-2.png", "Login/checkbox_1-2.png",
 									 Widget::TextureResType::PLIST);
-	checkbox->setPosition(Vec2(481, 600 - 309));
+	checkbox->setPosition(Vec2(481, designResolutionSize.height - 309));
 	checkbox->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
 	addChild(checkbox);
 
 	auto uidTextBox = TextFieldTTF::textFieldWithPlaceHolder("Test", "Arial", 20); // ::create();
 	//uidTextBox->setContentSize(Size(150, 20));
-	uidTextBox->setPosition(308, 600 - 312);
+	uidTextBox->setPosition(308, designResolutionSize.height - 312);
 	addChild(uidTextBox);
 
 	CursorManager::Get()->addCursorToLayer(this);
