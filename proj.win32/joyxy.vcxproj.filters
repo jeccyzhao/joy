@@ -100,6 +100,12 @@
     <Filter Include="src\client\assert">
       <UniqueIdentifier>{ab69434a-31a9-43fe-8b09-b1721ca27140}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\client\scene\intro\character\create">
+      <UniqueIdentifier>{1912bc48-8391-4e94-843e-9fdf2fd3be6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\scene\intro\advice">
+      <UniqueIdentifier>{48de31e8-bfbc-4f0d-a556-436d8108a20d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -147,9 +153,6 @@
     <ClCompile Include="..\Classes\client\manager\ResourceManager.cpp">
       <Filter>src\client\manager</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\client\scene\intro\AdviceScene.cpp">
-      <Filter>src\client\scene\intro</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\client\scene\intro\login\LoginScene.cpp">
       <Filter>src\client\scene\intro\login</Filter>
     </ClCompile>
@@ -164,6 +167,18 @@
     </ClCompile>
     <ClCompile Include="..\Classes\client\manager\CursorManager.cpp">
       <Filter>src\client\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\manager\PlayerRoleManager.cpp">
+      <Filter>src\client\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\scene\intro\character\create\CharacterCreate1.cpp">
+      <Filter>src\client\scene\intro\character\create</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\scene\intro\advice\AdviceScene.cpp">
+      <Filter>src\client\scene\intro\advice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\scene\intro\IntroSceneBase.cpp">
+      <Filter>src\client\scene\intro</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -227,9 +242,6 @@
     <ClInclude Include="..\Classes\client\manager\ResourceManager.h">
       <Filter>src\client\manager</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\client\scene\intro\AdviceScene.h">
-      <Filter>src\client\scene\intro</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\client\scene\intro\login\LoginScene.h">
       <Filter>src\client\scene\intro\login</Filter>
     </ClInclude>
@@ -250,6 +262,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\client\assert\AssertResource.h">
       <Filter>src\client\assert</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\manager\PlayerRoleManager.h">
+      <Filter>src\client\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\scene\intro\character\create\CharacterCreate1.h">
+      <Filter>src\client\scene\intro\character\create</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\scene\intro\advice\AdviceScene.h">
+      <Filter>src\client\scene\intro\advice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\scene\intro\IntroSceneBase.h">
+      <Filter>src\client\scene\intro</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
