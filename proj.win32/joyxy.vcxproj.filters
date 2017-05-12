@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client">
+      <UniqueIdentifier>{704b5e22-ac83-4493-b734-237070c87272}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\items">
+      <UniqueIdentifier>{e84fcdbd-6685-461c-8fa1-54e1a3cde003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\manager">
+      <UniqueIdentifier>{f7ea590d-6d9a-4db4-af09-45a39ae3e076}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\misc">
+      <UniqueIdentifier>{d38ad02a-ca57-48c4-b3b8-f92eb0888878}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\monster">
+      <UniqueIdentifier>{b5b03d89-2315-473d-ba81-5d2890a622c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\scene">
+      <UniqueIdentifier>{543656d9-7e5f-4896-9c11-c3367727c0a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\npc">
+      <UniqueIdentifier>{6c998488-d08b-49ed-82ce-814705cfdb9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\task">
+      <UniqueIdentifier>{88bca79a-53e5-4f65-963e-3ec00879beda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\ui">
+      <UniqueIdentifier>{ae67699b-724f-4085-9f19-dc2d769c1b9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\ui\layer">
+      <UniqueIdentifier>{5d47f0c2-f824-4888-b734-1994494b8cd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\ui\logic">
+      <UniqueIdentifier>{a701bdbf-f3eb-49ef-af41-f904f38e6ec1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine">
+      <UniqueIdentifier>{0ec77b31-8640-43eb-a402-fd248fe85b3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\3rdparty">
+      <UniqueIdentifier>{2f69fa66-989a-4026-8f07-baa83266062e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\extensions">
+      <UniqueIdentifier>{5fc38f71-fdd9-46b4-afd4-131618bd47b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\physical">
+      <UniqueIdentifier>{ee2ceabe-0b5a-4eab-b90e-0b6dbb632f52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\extensions\crypto">
+      <UniqueIdentifier>{95efce58-ff26-48c8-8841-7e3802087a57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\scene">
+      <UniqueIdentifier>{0aa95d89-d0fb-41b0-b31f-ddfda8f3cd4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\util">
+      <UniqueIdentifier>{67a49dfe-37c5-4e86-89f1-14234659facf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\extensions\crypto\base64">
+      <UniqueIdentifier>{968b0285-f5d5-4f73-abfd-da1965f336b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\extensions\crypto\md5">
+      <UniqueIdentifier>{b2ad98de-f6c0-46a9-b7af-3491da11c61e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\extensions\crypto\sha1">
+      <UniqueIdentifier>{57d01f5f-d5a1-43ad-b896-0142cd724be2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\ui\layer\menu">
+      <UniqueIdentifier>{93c00ec1-b8ca-4211-83f8-555eea141530}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\scene\intro">
+      <UniqueIdentifier>{7ef7033b-3a03-44f8-9d53-47bba0c8cccc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\scene\intro\login">
+      <UniqueIdentifier>{096f1f56-c076-4e5b-a4b8-719a07f83624}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\scene\intro\character">
+      <UniqueIdentifier>{5566d445-8560-436d-a779-8fb1380af146}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\ui">
+      <UniqueIdentifier>{eb8b9e21-1d18-4171-a7e2-3f91abb15fe1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\scene\intro\server">
+      <UniqueIdentifier>{e3373c7a-5aad-4455-9df1-cc51cbdbdb20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\scene\game">
+      <UniqueIdentifier>{e481b981-e90d-44be-a2c6-9c17bc634572}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\engine\extensions\cocos2d">
+      <UniqueIdentifier>{2ee6cfab-a8aa-43b6-95bc-ff499195e5cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\assert">
+      <UniqueIdentifier>{ab69434a-31a9-43fe-8b09-b1721ca27140}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Client\Items\ItemBase.cpp">
+      <Filter>src\client\items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Client\Items\EquipmentItem.cpp">
+      <Filter>src\client\items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Engine\Util\DBUtil.cpp">
+      <Filter>src\engine\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Engine\3rdparty\shell.c">
+      <Filter>src\engine\3rdparty</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Engine\3rdparty\sqlite3.c">
+      <Filter>src\engine\3rdparty</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Client\Scene\LoadingScene.cpp">
+      <Filter>src\client\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Engine\Physical\PhysicsShapeCache.cpp">
+      <Filter>src\engine\physical</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\extensions\crypto\base64\libb64.c">
+      <Filter>src\engine\extensions\crypto\base64</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\extensions\crypto\md5\md5.c">
+      <Filter>src\engine\extensions\crypto\md5</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\engine\extensions\crypto\sha1\sha1.cpp">
+      <Filter>src\engine\extensions\crypto\sha1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Engine\Util\GameUtils.cpp">
+      <Filter>src\engine\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\manager\ResourceManager.cpp">
+      <Filter>src\client\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\scene\intro\AdviceScene.cpp">
+      <Filter>src\client\scene\intro</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\scene\intro\login\LoginScene.cpp">
+      <Filter>src\client\scene\intro\login</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\scene\intro\server\ServerChannelScene.cpp">
+      <Filter>src\client\scene\intro\server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\scene\intro\character\CharacterSelectScene.cpp">
+      <Filter>src\client\scene\intro\character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\scene\game\GameScene.cpp">
+      <Filter>src\client\scene\game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\manager\CursorManager.cpp">
+      <Filter>src\client\manager</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Client\Items\ItemBase.h">
+      <Filter>src\client\items</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Client\Items\EquipmentItem.h">
+      <Filter>src\client\items</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Client\Items\ItemManager.h">
+      <Filter>src\client\items</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Engine\Singleton.h">
+      <Filter>src\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Engine\Scene\SceneLayer.h">
+      <Filter>src\engine\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Engine\Util\DBUtil.h">
+      <Filter>src\engine\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Client\Misc\MapData.h">
+      <Filter>src\client\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Engine\3rdparty\sqlite3.h">
+      <Filter>src\engine\3rdparty</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Engine\3rdparty\sqlite3ext.h">
+      <Filter>src\engine\3rdparty</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Client\Scene\LoadingScene.h">
+      <Filter>src\client\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Engine\Physical\PhysicsShapeCache.h">
+      <Filter>src\engine\physical</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Client\Client.h">
+      <Filter>src\client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\extensions\crypto\base64\libb64.h">
+      <Filter>src\engine\extensions\crypto\base64</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\extensions\crypto\md5\md5.h">
+      <Filter>src\engine\extensions\crypto\md5</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\extensions\crypto\sha1\sha1.h">
+      <Filter>src\engine\extensions\crypto\sha1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Engine\Util\GameUtils.h">
+      <Filter>src\engine\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\manager\ResourceManager.h">
+      <Filter>src\client\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\scene\intro\AdviceScene.h">
+      <Filter>src\client\scene\intro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\scene\intro\login\LoginScene.h">
+      <Filter>src\client\scene\intro\login</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\scene\intro\server\ServerChannelScene.h">
+      <Filter>src\client\scene\intro\server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\scene\intro\character\CharacterSelectScene.h">
+      <Filter>src\client\scene\intro\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\scene\game\GameScene.h">
+      <Filter>src\client\scene\game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\manager\CursorManager.h">
+      <Filter>src\client\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\misc\CursorData.h">
+      <Filter>src\client\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\assert\AssertResource.h">
+      <Filter>src\client\assert</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\nsyt_D.ico" />
+  </ItemGroup>
+</Project>
