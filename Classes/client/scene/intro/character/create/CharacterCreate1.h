@@ -24,5 +24,6 @@ public:
 	virtual void update(float dt);
 private:
 	Vector<Sprite*> fomas;
+	void updateButtonStatus(Ref* triggerButton, string revertButtonTagName);
 };
 #endif

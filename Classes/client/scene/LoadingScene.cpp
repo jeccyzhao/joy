@@ -49,7 +49,7 @@ void LoadingScene::onEnter()
 	numLoadedRes = 0;
 
 	vector<string> resources;
-	if (FileUtils::sharedFileUtils()->isFileExist(resourcePath))
+	if (FileUtils::getInstance()->isFileExist(resourcePath))
 	{
 		resources.push_back(resourcePath);
 	}
@@ -58,7 +58,7 @@ void LoadingScene::onEnter()
 		for (int i = 0; i < MAXIMUM_PLIST_ITERATION; i++)
 		{
 			string fileName = resourcePath + to_string(i) + ".plist";
-			if (FileUtils::sharedFileUtils()->isFileExist(fileName))
+			if (FileUtils::getInstance()->isFileExist(fileName))
 			{
 				numTotalRes++;
 				resources.push_back(resourcePath + to_string(i));
@@ -73,7 +73,7 @@ void LoadingScene::loadLocalResources(vector<string> resources)
 {
 	for (string resource : resources)
 	{
-		TextureCache::sharedTextureCache()->addImageAsync(resource + ".pvr.ccz",
+		TextureCache::getInstance()->addImageAsync(resource + ".pvr.ccz",
 			CC_CALLBACK_1(LoadingScene::onLoadResourceCallback, this, resource));
 	}
 }

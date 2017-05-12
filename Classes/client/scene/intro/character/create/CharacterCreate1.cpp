@@ -27,18 +27,17 @@ bool CharacterCreate1::init()
 	addChild(getSprite("charcreate/create1/back_1-1.png"));
 	addChild(getSprite("charcreate/create1/xinxiang_1-1.png", 0, designResolutionSize.height, Vec2::ANCHOR_TOP_LEFT)); 
 
+	auto efxfo = getSprite("charcreate/create1/efxfo_1-1.png", 114, designResolutionSize.height - 209, Vec2::ANCHOR_TOP_LEFT);
+	efxfo->runAction(Animate::create(createAnimation("charcreate/create1/efxfo_1", 8, 0.5f, true)));
+	addChild(efxfo);
+
+	auto efxmo = getSprite("charcreate/create1/efxmo_1-1.png", 452, designResolutionSize.height - 203, Vec2::ANCHOR_TOP_LEFT);
+	efxmo->runAction(Animate::create(createAnimation("charcreate/create1/efxmo_1", 4, 0.5f, true)));
+	addChild(efxmo);
+
 	auto foButton = createButton(174, designResolutionSize.height - 296, 
 		"charcreate/create1/fo_1-1.png", "charcreate/create1/fo_1-2.png", "charcreate/create1/fo_1-3.png", "", [this](Ref* sender) {
-
-		Button* trigger = (Button*)sender;
-		trigger->setClicked(true);
-
-		Node* node = getChildByName("btn_mo");
-		if (node)
-		{
-			Button* button = (Button*)node;
-			button->setClicked(false);
-		}
+		updateButtonStatus(sender, "btn_mo");
 	});
 
 	foButton->setName("btn_fo");
@@ -46,16 +45,7 @@ bool CharacterCreate1::init()
 
 	auto moButton = createButton(542, designResolutionSize.height - 296,
 		"charcreate/create1/mo_1-1.png", "charcreate/create1/mo_1-2.png", "charcreate/create1/mo_1-3.png", "", [this](Ref* sender) {
-		
-		Button* trigger = (Button*)sender;
-		trigger->setClicked(true);
-
-		Node* node = getChildByName("btn_fo");
-		if (node)
-		{
-			Button* button = (Button*)node;
-			button->setClicked(false);
-		}
+		updateButtonStatus(sender, "btn_fo");
 	});
 
 	moButton->setName("btn_mo");
@@ -74,6 +64,19 @@ bool CharacterCreate1::init()
 	scheduleUpdate();
 
 	return true;
+}
+
+void CharacterCreate1::updateButtonStatus(Ref* triggerButton, string revertButtonTagName)
+{
+	Button* trigger = (Button*) triggerButton;
+	trigger->setClicked(true);
+
+	Node* node = getChildByName(revertButtonTagName);
+	if (node)
+	{
+		Button* button = (Button*)node;
+		button->setClicked(false);
+	}
 }
 
 void CharacterCreate1::update(float dt)
