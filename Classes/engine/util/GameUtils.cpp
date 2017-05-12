@@ -35,6 +35,11 @@ Sprite* getSprite(string filename, float x, float y, Vec2 anchorPoint)
 	return psprite;
 }
 
+SpriteFrame* getSpriteFrameByName(const string spriteName)
+{
+	return SpriteFrameCache::getInstance()->spriteFrameByName(spriteName);
+}
+
 bool resourcePresentForLoading(string filename)
 {
 	return FileUtils::getInstance()->isFileExist(filename);

@@ -7,6 +7,7 @@ using namespace std;
 
 enum CursorIconType
 {
+	NONE,
 	CURSOR_NORMAL,
 	CURSOR_ATTACK,
 	CURSOR_TALK,

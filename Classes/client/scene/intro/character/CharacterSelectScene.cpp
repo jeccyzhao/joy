@@ -63,6 +63,7 @@ bool CharacterSelectScene::init()
 		addChild(getSprite("charselect/cloud_1-1.png", 90 + 234 * (i - 1), 600 - 279, Vec2::ANCHOR_TOP_LEFT));
 	}
 
+	CursorManager::Get()->setCursor(CURSOR_ATTACK);
 	CursorManager::Get()->addCursorToLayer(this);
 
 	return true;

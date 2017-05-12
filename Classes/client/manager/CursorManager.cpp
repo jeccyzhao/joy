@@ -6,6 +6,7 @@
 CursorManager::CursorManager()
 {
 	m_cursorSprite = nullptr;
+	m_cursorIconType = NONE;
 	init();
 }
 
@@ -13,21 +14,31 @@ void CursorManager::setCursor(CursorIconType iconType)
 {
 	if (m_cursorIconType != iconType)
 	{
+		if (m_cursorIconType != NONE)
+		{
+			// stop actions on sprite before updating
+			m_cursorSprite->stopAllActions();
+		}
+
 		m_cursorIconType = iconType;
 		auto cursorInfo = getCursorIconData(iconType);
 		if (cursorInfo.animation)
 		{
 			Animation* animation = createAnimation(cursorInfo.spriteName, cursorInfo.frames, 0.5f);
-			auto sprite = getSprite(cursorInfo.spriteName + "-1.png");
-			sprite->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
-			sprite->runAction(Animate::create(animation));
-
 			if (m_cursorSprite == nullptr)
 			{
-				sprite->setPosition(designResolutionSize.width / 2, designResolutionSize.height / 2);
+				auto sprite = getSprite(cursorInfo.spriteName + "-1.png");
+				sprite->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
+				sprite->setPosition(designResolutionSize.width / 2, designResolutionSize.height / 2); 
+				m_cursorSprite = sprite;
+			}
+			else
+			{
+				// replace using another cursor 
+				m_cursorSprite->setDisplayFrame(getSpriteFrameByName(cursorInfo.spriteName + "-1.png"));
 			}
 
-			m_cursorSprite = sprite;
+			m_cursorSprite->runAction(Animate::create(animation));
 		}
 	}
 }
