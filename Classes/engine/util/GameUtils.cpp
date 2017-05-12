@@ -7,13 +7,13 @@ Sprite* getSprite(string filename, float x, float y, Vec2 anchorPoint)
 
 	// Search in the cache, first
 	SpriteFrameCache *sfc = SpriteFrameCache::getInstance();
-	SpriteFrame *psf = sfc->spriteFrameByName(filename.c_str());
+	SpriteFrame *psf = sfc->getSpriteFrameByName(filename.c_str());
 
 	string::size_type pos;
 	if (!psf && (pos = filename.find_last_of('/')) != filename.npos)
 	{
 		string lastPart(filename.begin() + pos + 1, filename.end());
-		psf = sfc->spriteFrameByName(lastPart.c_str());
+		psf = sfc->getSpriteFrameByName(lastPart.c_str());
 	}
 
 	if (psf)
@@ -37,7 +37,7 @@ Sprite* getSprite(string filename, float x, float y, Vec2 anchorPoint)
 
 SpriteFrame* getSpriteFrameByName(const string spriteName)
 {
-	return SpriteFrameCache::getInstance()->spriteFrameByName(spriteName);
+	return SpriteFrameCache::getInstance()->getSpriteFrameByName(spriteName);
 }
 
 bool resourcePresentForLoading(string filename)
@@ -96,7 +96,7 @@ Animation* createAnimation(const std::string &spriteName, int frames, float dela
 	Vector<SpriteFrame*> spriteFrames;
 	for (int i = 1; i <= frames; i++)
 	{
-		spriteFrames.pushBack(SpriteFrameCache::getInstance()->spriteFrameByName(spriteName + "-" + to_string(i) + ".png"));
+		spriteFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName(spriteName + "-" + to_string(i) + ".png"));
 	}
 
 	Animation *animation = Animation::createWithSpriteFrames(spriteFrames);
