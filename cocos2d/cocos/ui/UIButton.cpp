@@ -580,41 +580,44 @@ const Rect& Button::getCapInsetsDisabledRenderer()const
 
 void Button::onMouseMove(Event* event)
 {
-	EventMouse* e = (EventMouse*) event;
+	if (_bright)
+	{
+		EventMouse* e = (EventMouse*)event;
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 locationInNode = convertToNodeSpace(Vec2(e->getCursorX(), e->getCursorY() + visibleSize.height));
+		Size visibleSize = Director::getInstance()->getVisibleSize();
+		Vec2 locationInNode = convertToNodeSpace(Vec2(e->getCursorX(), e->getCursorY() + visibleSize.height));
 
-	float rectY = getPosition().y;
-	if (getAnchorPoint() == Vec2::ANCHOR_TOP_LEFT)
-	{
-		rectY = rectY - getContentSize().height;
-	}
-	
-	Rect r = Rect(getPosition().x, rectY, getContentSize().width, getContentSize().height);
-	
-	if (r.containsPoint(Vec2(e->getCursorX(), e->getCursorY())))
-	{
-		_isButtonHovered = true;
-	}
-	else
-	{
-		_isButtonHovered = false;
-	}
+		float rectY = getPosition().y;
+		if (getAnchorPoint() == Vec2::ANCHOR_TOP_LEFT)
+		{
+			rectY = rectY - getContentSize().height;
+		}
 
-	if (_isButtonClicked)
-	{
-		_buttonHoverRenderer->setVisible(false);
-		_buttonClickedRenderer->setVisible(true);
-		_buttonDisabledRenderer->setVisible(false);
-		_buttonNormalRenderer->setVisible(false);
-	}
-	else
-	{
-		_buttonHoverRenderer->setVisible(_isButtonHovered);
-		_buttonClickedRenderer->setVisible(false);
-		_buttonDisabledRenderer->setVisible(false);
-		_buttonNormalRenderer->setVisible(_isButtonHovered ? false : true);
+		Rect r = Rect(getPosition().x, rectY, getContentSize().width, getContentSize().height);
+
+		if (r.containsPoint(Vec2(e->getCursorX(), e->getCursorY())))
+		{
+			_isButtonHovered = true;
+		}
+		else
+		{
+			_isButtonHovered = false;
+		}
+
+		if (_isButtonClicked)
+		{
+			_buttonHoverRenderer->setVisible(false);
+			_buttonClickedRenderer->setVisible(true);
+			_buttonDisabledRenderer->setVisible(false);
+			_buttonNormalRenderer->setVisible(false);
+		}
+		else
+		{
+			_buttonHoverRenderer->setVisible(_isButtonHovered);
+			_buttonClickedRenderer->setVisible(false);
+			_buttonDisabledRenderer->setVisible(false);
+			_buttonNormalRenderer->setVisible(_isButtonHovered ? false : true);
+		}
 	}
 }
 
