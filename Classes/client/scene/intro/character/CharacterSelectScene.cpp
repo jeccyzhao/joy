@@ -42,7 +42,7 @@ bool CharacterSelectScene::init()
 	Vector<SpriteFrame*> spriteFrames;
 	for (int i = 1; i <= 3; i++)
 	{
-		spriteFrames.pushBack(SpriteFrameCache::getInstance()->spriteFrameByName("charselect/roleback_1-" + to_string(i) + ".png"));
+		spriteFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName("charselect/roleback_1-" + to_string(i) + ".png"));
 	}
 
 	Animation *animation = Animation::createWithSpriteFrames(spriteFrames);

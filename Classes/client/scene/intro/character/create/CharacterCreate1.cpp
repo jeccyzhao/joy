@@ -1,4 +1,5 @@
 #include "CharacterCreate1.h"
+#include "CharacterCreate2.h"
 #include "engine\util\GameUtils.h"
 #include "client\manager\CursorManager.h"
 #include "client\scene\intro\character\CharacterSelectScene.h"
@@ -35,35 +36,44 @@ bool CharacterCreate1::init()
 	efxmo->runAction(Animate::create(createAnimation("charcreate/create1/efxmo_1", 4, 0.5f, true)));
 	addChild(efxmo);
 
-	auto foButton = createButton(174, designResolutionSize.height - 296, 
+	auto budButton = createButton(174, designResolutionSize.height - 296, 
 		"charcreate/create1/fo_1-1.png", "charcreate/create1/fo_1-2.png", "charcreate/create1/fo_1-3.png", "", [this](Ref* sender) {
-		updateButtonStatus(sender, "btn_mo");
+		selectedHuddle = HUDDLE_BUD;
+		updateButtonStatus(sender, "evil");
 	});
 
-	foButton->setName("btn_fo");
-	addChild(foButton);
+	budButton->setName("bud");
+	addChild(budButton);
 
-	auto moButton = createButton(542, designResolutionSize.height - 296,
+	auto evilButton = createButton(542, designResolutionSize.height - 296,
 		"charcreate/create1/mo_1-1.png", "charcreate/create1/mo_1-2.png", "charcreate/create1/mo_1-3.png", "", [this](Ref* sender) {
-		updateButtonStatus(sender, "btn_fo");
+
+		selectedHuddle = HUDDLE_EVIL;
+		updateButtonStatus(sender, "bud");
 	});
 
-	moButton->setName("btn_mo");
-	addChild(moButton);
+	evilButton->setName("evil");
+	addChild(evilButton);
 
-	addChild(createButton(632, designResolutionSize.height - 481, "charcreate/create1/prev_1", [this](Ref* sender) {
-		Director::getInstance()->replaceScene(CharacterSelectScene::createScene());
-	}));
-	addChild(createButton(632, designResolutionSize.height - 530, "charcreate/create1/next_1", [this](Ref* sender) {
-		//Director::getInstance()->replaceScene(CharacterSelectScene::createScene());
-	}));
-	
+	addPreButtonToLayer(this);
+	addNextButtonToLayer(this, false);
 	addFomasToLayer(this);
 
 	CursorManager::Get()->addCursorToLayer(this);
 	scheduleUpdate();
 
 	return true;
+}
+
+void CharacterCreate1::onPreButtonClick()
+{
+	Director::getInstance()->replaceScene(CharacterSelectScene::createScene());
+}
+
+void CharacterCreate1::onNextButtonClick()
+{
+	CharacterCreate2::setPlayerHuddle(selectedHuddle);
+	Director::getInstance()->replaceScene(CharacterCreate2::createScene());
 }
 
 void CharacterCreate1::updateButtonStatus(Ref* triggerButton, string revertButtonTagName)
@@ -76,6 +86,11 @@ void CharacterCreate1::updateButtonStatus(Ref* triggerButton, string revertButto
 	{
 		Button* button = (Button*)node;
 		button->setClicked(false);
+	}
+
+	if (!nextButton->isBright())
+	{
+		nextButton->setBright(true);
 	}
 }
 
