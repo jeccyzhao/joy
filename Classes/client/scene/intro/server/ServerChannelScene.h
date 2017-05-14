@@ -4,6 +4,7 @@
 
 #include "cocos2d.h"
 #include "client\scene\intro\IntroSceneBase.h"
+#include "ui\UIButton.h"
 
 USING_NS_CC;
 using namespace std;
@@ -24,5 +25,8 @@ public:
 	~ServerChannelScene();
 
 	virtual void update(float dt);
+
+private:
+	Button* enterButton;
 };
 #endif

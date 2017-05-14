@@ -31,6 +31,11 @@ public:
 protected:
 	void onPreButtonClick() override;
 	void onNextButtonClick() override;
+	Button* initJobButton(ePlayerJob job, string nodeName);
+	void refreshJobButtonStatus(Button* currentToggleButton);
+	void setJobDescSprite(ePlayerJob job);
 	static ePlayerHuddle huddle;
+	Sprite* jobDescSprite;
+
 };
 #endif

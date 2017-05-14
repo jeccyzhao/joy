@@ -34,10 +34,10 @@ bool CharacterSelectScene::init()
 	}));
 
 	addChild(createButton(15, 600 - 530, "charselect/delete_1", [this](Ref* sender) {
-	}));
+	}, false));
 
 	addChild(createButton(632, 600 - 481, "charselect/startgame_1", [this](Ref* sender) {
-	}));
+	}, false));
 
 	Vector<SpriteFrame*> spriteFrames;
 	for (int i = 1; i <= 3; i++)

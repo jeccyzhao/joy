@@ -43,6 +43,7 @@ const char* gbk2UTF8(const char* gb2312);
 * @y: y position
 * @imagePattern: pattern of image file which would be iterated to construct sprite frames
 * @clickEvent: click event
+* @bright: disabled if true given
 * @joiner: joiner to construct the image file path
 * @imageExt: extension of image file
 * @start: starting index of the image
@@ -50,6 +51,7 @@ const char* gbk2UTF8(const char* gb2312);
 Button* createButton(const float x, const float y,
 					 const std::string &imagePattern, 
 					 const Widget::ccWidgetClickCallback &clickEvent = nullptr,
+					 const bool bright = true,	
 				     const std::string joiner = "-",
 					 const std::string imageExt = ".png",
 					 const int start = 1);
@@ -73,6 +75,7 @@ Button* createButton(const float x, const float y,
 					 const std::string &pressedImage,
 					 const std::string &disableImage = "",
 					 const Widget::ccWidgetClickCallback &clickEvent = nullptr,
+					 const bool bright = true,
 					 Vec2 anchorPoint = Vec2::ANCHOR_TOP_LEFT,
 				     Widget::TextureResType texType = Widget::TextureResType::PLIST);
 

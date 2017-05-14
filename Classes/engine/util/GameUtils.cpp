@@ -48,6 +48,7 @@ bool resourcePresentForLoading(string filename)
 Button* createButton(const float x, const float y, 
 				     const std::string &imagePattern, 
 					 const Widget::ccWidgetClickCallback &clickEvent,
+					 const bool bright,
 					 const std::string joiner,
 					 const string imageExt, 
 					 const int start)
@@ -57,7 +58,8 @@ Button* createButton(const float x, const float y,
 						imagePattern + joiner + to_string(start + 1) + imageExt,
 						imagePattern + joiner + to_string(start + 2) + imageExt,
 						imagePattern + joiner + to_string(start + 3) + imageExt, 
-						clickEvent);
+						clickEvent, 
+						bright);
 }
 
 Button* createButton(const float x, const float y, 
@@ -66,6 +68,7 @@ Button* createButton(const float x, const float y,
 					 const std::string &pressedImage,
 					 const std::string &disableImage,
 				     const Widget::ccWidgetClickCallback &clickEvent,
+					 const bool bright,
 					 Vec2 anchorPoint,
 					 Widget::TextureResType texType)
 {
@@ -73,6 +76,7 @@ Button* createButton(const float x, const float y,
 	button->setPosition(Vec2(x, y));
 	button->setAnchorPoint(anchorPoint);
 	button->addClickEventListener(clickEvent);
+	button->setBright(bright);
 	return button;
 }
 

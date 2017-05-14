@@ -31,9 +31,10 @@ bool ServerChannelScene::init()
 	addChild(getSprite("stage1/logo_1-1.png", 282, 583, Vec2::ANCHOR_TOP_LEFT));
 	addChild(getSprite("serverselect/back_1-1.png", 270, designResolutionSize.height - 225, Vec2::ANCHOR_TOP_LEFT));
 
-	addChild(createButton(322, designResolutionSize.height - 457, "serverselect/enter_1", [this](Ref* sender) {
+	enterButton = createButton(322, designResolutionSize.height - 457, "serverselect/enter_1", [this](Ref* sender) {
 		Director::getInstance()->replaceScene(LoginScene::createScene());
-	}));
+	}, false);
+	addChild(enterButton);
 	
 	addChild(createButton(440, designResolutionSize.height - 457, "serverselect/quit_1", [this](Ref* sender) {
 		Director::getInstance()->end();
@@ -65,6 +66,7 @@ bool ServerChannelScene::init()
 			}
 
 			trigger->setClicked(true);
+			enterButton->setBright(true);
 		});
 
 		levelButton->setTag(i);
