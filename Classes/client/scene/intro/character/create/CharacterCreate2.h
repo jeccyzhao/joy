@@ -25,17 +25,24 @@ public:
 
 	virtual void update(float dt);
 
-	static ePlayerHuddle getPlayerHuddle();
-	static void setPlayerHuddle(ePlayerHuddle playerHuddle);
+	static E_PLAYER_HUDDLE getPlayerHuddle();
+	static void setPlayerHuddle(E_PLAYER_HUDDLE playerHuddle);
 
 protected:
 	void onPreButtonClick() override;
 	void onNextButtonClick() override;
-	Button* initJobButton(ePlayerJob job, string nodeName);
-	void refreshJobButtonStatus(Button* currentToggleButton);
-	void setJobDescSprite(ePlayerJob job);
-	static ePlayerHuddle huddle;
-	Sprite* jobDescSprite;
 
+private:
+	static E_PLAYER_HUDDLE huddle; 
+	void refreshJobButtonStatus(Button* currentToggleButton, E_PLAYER_JOB job);
+	void setJobDescSprite(E_PLAYER_JOB job);
+	Button* initJobButton(E_PLAYER_JOB job, string nodeName);
+	Sprite* jobDescSprite;
+	Sprite* swirlSprite;
+	Animation* swirlAnimation;
+	E_PLAYER_JOB selectedJob;
+	void onAfterSelecteJob(Node * pSender);
+	bool proceeding;
+	void onLoadResourceCallback(Texture2D* texture);
 };
 #endif

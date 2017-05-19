@@ -28,7 +28,7 @@ public:
 protected:
 	void onPreButtonClick() override;
 	void onNextButtonClick() override;
-	ePlayerHuddle selectedHuddle;
+	E_PLAYER_HUDDLE selectedHuddle;
 
 private:
 	void updateButtonStatus(Ref* triggerButton, string revertButtonTagName);

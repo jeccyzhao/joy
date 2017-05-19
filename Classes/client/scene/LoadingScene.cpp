@@ -2,6 +2,7 @@
 #include "client\Client.h"
 #include "client\scene\intro\advice\AdviceScene.h"
 #include "client\scene\intro\character\create\CharacterCreate1.h"
+#include "client\scene\intro\character\create\CharacterCreate3.h"
 #include "client\manager\CursorManager.h"
 
 USING_NS_CC;

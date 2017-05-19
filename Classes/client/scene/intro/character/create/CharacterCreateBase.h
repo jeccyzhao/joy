@@ -5,6 +5,7 @@
 #include "cocos2d.h"
 #include "ui\UIButton.h"
 #include "client\scene\intro\IntroSceneBase.h"
+#include "client\misc\PlayerData.h"
 
 USING_NS_CC;
 using namespace std;
@@ -19,5 +20,9 @@ protected:
 	void addNextButtonToLayer(Layer* layer, bool bright = false);
 	virtual void onPreButtonClick();
 	virtual void onNextButtonClick();
+	void addHuddleBackgroundToLayer(Layer* layer, E_PLAYER_HUDDLE huddle);
+private:
+	Sprite* efxSprite;
+	Sprite* huddleBackSprite;
 };
 #endif

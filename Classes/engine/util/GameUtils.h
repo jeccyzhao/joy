@@ -87,7 +87,7 @@ Button* createButton(const float x, const float y,
  * @delay: delay per unit of animation
  * @loop: flag to indicate whether the animation looped or not
  */
-Animation* createAnimation(const std::string &spriteName, int frames, float delay, bool loop = true);
+Animation* createAnimation(const std::string &spriteName, int frames, float delay, bool loop = true, bool restoreOriginalFrame = true);
 
 /**
   * Pre-load all given resources
@@ -95,5 +95,11 @@ Animation* createAnimation(const std::string &spriteName, int frames, float dela
   * @resources: list of resource bundles
   */
 void preLoadResources(const vector<std::string> resources);
+void preLoadResources(const std::string resourcePattern, int start = 0, int end = 0, const std::string pattern = "{n}");
+void preLoadResource(const std::string resource);
+
+void asyncLoadResources(const std::string resourcePattern, int start = 0, int end = 0, 
+		const std::function<void(Texture2D*)>& callback = nullptr, 
+		const std::string pattern = "{n}");
 
 #endif

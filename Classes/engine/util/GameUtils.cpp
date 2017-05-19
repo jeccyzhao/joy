@@ -95,7 +95,7 @@ const char* gbk2UTF8(const char* gb2312)
 }
 
 
-Animation* createAnimation(const std::string &spriteName, int frames, float delay, bool loop)
+Animation* createAnimation(const std::string &spriteName, int frames, float delay, bool loop, bool restoreOriginalFrame)
 {
 	Vector<SpriteFrame*> spriteFrames;
 	for (int i = 1; i <= frames; i++)
@@ -109,7 +109,7 @@ Animation* createAnimation(const std::string &spriteName, int frames, float dela
 		animation->setLoops(-1);
 	}
 
-	animation->setRestoreOriginalFrame(true);
+	animation->setRestoreOriginalFrame(restoreOriginalFrame);
 	animation->setDelayPerUnit(delay);
 
 	return animation;
@@ -119,6 +119,44 @@ void preLoadResources(const vector<std::string> resources)
 {
 	for (int i = 0; i < resources.size(); i++)
 	{
-		SpriteFrameCache::getInstance()->addSpriteFramesWithFile(resources[i]);
+		preLoadResource(resources[i]);
+	}
+}
+
+void preLoadResources(const std::string resourcePattern, int start, int end, const std::string pattern)
+{
+	string::size_type pos = resourcePattern.find(pattern);
+	if (pos)
+	{
+		for (int i = start; i <= end; i++)
+		{
+			std::string resource = resourcePattern;
+			resource.replace(pos, pattern.length(), to_string(i));
+			preLoadResource(resource);
+		}
+	}
+}
+
+void preLoadResource(const std::string resource)
+{
+	if (FileUtils::getInstance()->isFileExist(resource))
+	{
+		SpriteFrameCache::getInstance()->addSpriteFramesWithFile(resource);
+	}
+}
+
+void asyncLoadResources(const std::string resourcePattern, int start, int end, 
+	const std::function<void(Texture2D*)>& callback, const std::string pattern)
+{
+	string::size_type pos = resourcePattern.find(pattern);
+	if (pos)
+	{
+		for (int i = start; i <= end; i++)
+		{
+			std::string resource = resourcePattern;
+			resource.replace(pos, pattern.length(), to_string(i));
+		
+			TextureCache::getInstance()->addImageAsync(resource, callback);
+		}
 	}
 }

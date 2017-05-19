@@ -6,7 +6,7 @@ USING_NS_CC;
 using namespace std;
 
 // cursor
-static const vector<string> CURSOR_RESOURCE_BUNDLES	= { "cursor/cursor.plist", "cursor/cursor.plist" };
+static const vector<string> CURSOR_RESOURCE_BUNDLES	= { "cursor/cursor.plist" };
 static const string CURSOR_ICON_NORMAL				=	"cursor_normal_1";
 static const string CURSOR_ICON_ATTACK				=	"cursor_attack_1";
 static const string CURSOR_ICON_BUY					=	"cursor_buy_1";

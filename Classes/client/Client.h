@@ -12,6 +12,10 @@ using namespace std;
 #define DESIGN_RESOLUTION_800X600   1
 #define DESIGN_RESOLUTION_1024X768  2
 
+#define Z_ORDER_ROLE			999998
+#define Z_ORDER_GAME_SCENE		999999
+#define Z_ORDER_MOUSE			1000000
+
 /* If you want to switch design resolution, change next line */
 #define TARGET_DESIGN_RESOLUTION_SIZE  DESIGN_RESOLUTION_800X600
 #define DEBUG_DRAW true

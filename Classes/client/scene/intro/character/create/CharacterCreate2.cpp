@@ -2,12 +2,13 @@
 #include "engine\util\GameUtils.h"
 #include "client\manager\CursorManager.h"
 #include "client\scene\intro\character\create\CharacterCreate1.h"
+#include "client\scene\intro\character\create\CharacterCreate3.h"
 #include "client\Client.h"
 #include "ui\UIButton.h"
 
 USING_NS_CC;
 
-ePlayerHuddle CharacterCreate2::huddle = HUDDLE_NONE;
+E_PLAYER_HUDDLE CharacterCreate2::huddle = HUDDLE_NONE;
 
 Scene* CharacterCreate2::createScene()
 {
@@ -17,12 +18,12 @@ Scene* CharacterCreate2::createScene()
 	return scene;
 }
 
-void CharacterCreate2::setPlayerHuddle(ePlayerHuddle playerHuddle)
+void CharacterCreate2::setPlayerHuddle(E_PLAYER_HUDDLE playerHuddle)
 {
 	huddle = playerHuddle;
 }
 
-ePlayerHuddle CharacterCreate2::getPlayerHuddle()
+E_PLAYER_HUDDLE CharacterCreate2::getPlayerHuddle()
 {
 	return huddle;
 }
@@ -36,36 +37,17 @@ bool CharacterCreate2::init()
 	}
 
 	addBackgroundToLayer(this);
-
-	Sprite* efxSprite;
-
-	switch (huddle)
-	{
-		case HUDDLE_BUD:
-			addChild(getSprite("charcreate/create3/back_fo_1-1.png"));
-			efxSprite = getSprite("charcreate/create3/efx_fo_1-1.png", 124, designResolutionSize.height - 228, Vec2::ANCHOR_TOP_LEFT);
-			efxSprite->runAction(Animate::create(createAnimation("charcreate/create3/efx_fo_1", 4, 0.5f)));
-			break;
-		case HUDDLE_EVIL:
-			addChild(getSprite("charcreate/create3/back_mo_1-1.png"));
-			efxSprite = getSprite("charcreate/create3/efx_mo_1-1.png", 98, designResolutionSize.height - 217, Vec2::ANCHOR_TOP_LEFT);
-			efxSprite->runAction(Animate::create(createAnimation("charcreate/create3/efx_mo_1", 4, 0.5f)));
-			break;
-		default:
-			break;
-	}
-
-	if (efxSprite)
-	{
-		addChild(efxSprite);
-	}
+	addHuddleBackgroundToLayer(this, huddle);
 
 	addChild(initJobButton(JOB_SWORDMAN, "jb1"));
 	addChild(initJobButton(JOB_BOWMAN, "jb2"));
 	addChild(initJobButton(JOB_MAGICIAN, "jb3"));
 	addChild(initJobButton(JOB_TRANSFORMER, "jb4"));
-
 	addChild(getSprite("charcreate/create3/zhiye_1-1.png", 0, designResolutionSize.height, Vec2::ANCHOR_TOP_LEFT));
+
+	swirlSprite = getSprite("charcreate/create3/swirl_1-1.png", 89, designResolutionSize.height - 120, Vec2::ANCHOR_TOP_LEFT);
+	swirlSprite->setVisible(false);
+	addChild(swirlSprite);
 
 	addPreButtonToLayer(this);
 	addNextButtonToLayer(this, false);
@@ -77,7 +59,7 @@ bool CharacterCreate2::init()
 	return true;
 }
 
-void CharacterCreate2::setJobDescSprite(ePlayerJob job)
+void CharacterCreate2::setJobDescSprite(E_PLAYER_JOB job)
 {
 	string jobDescFile = "";
 	switch (job)
@@ -102,7 +84,7 @@ void CharacterCreate2::setJobDescSprite(ePlayerJob job)
 	{
 		if (jobDescSprite)
 		{
-			jobDescSprite->setDisplayFrame(getSpriteFrameByName(jobDescFile));
+			jobDescSprite->setSpriteFrame(getSpriteFrameByName(jobDescFile));
 		}
 		else
 		{
@@ -112,7 +94,7 @@ void CharacterCreate2::setJobDescSprite(ePlayerJob job)
 	}
 }
 
-Button* CharacterCreate2::initJobButton(ePlayerJob job, string nodeName)
+Button* CharacterCreate2::initJobButton(E_PLAYER_JOB job, string nodeName)
 {
 	Button* button = nullptr;
 	
@@ -122,32 +104,28 @@ Button* CharacterCreate2::initJobButton(ePlayerJob job, string nodeName)
 			button = createButton(89, designResolutionSize.height - 320,
 				"charcreate/create3/radio1_1-1.png", "charcreate/create3/radio1_1-2.png",
 				"charcreate/create3/radio1_1-3.png", "", [this](Ref* sender) {
-				setJobDescSprite(JOB_SWORDMAN);
-				refreshJobButtonStatus((Button*)sender);
+				refreshJobButtonStatus((Button*)sender, JOB_SWORDMAN);
 			});
 			break;
 		case JOB_BOWMAN:
 			button = createButton(140, designResolutionSize.height - 371,
 				"charcreate/create3/radio2_1-1.png", "charcreate/create3/radio2_1-2.png",
 				"charcreate/create3/radio2_1-3.png", "", [this](Ref* sender) {
-				setJobDescSprite(JOB_BOWMAN);
-				refreshJobButtonStatus((Button*)sender);
+				refreshJobButtonStatus((Button*)sender, JOB_BOWMAN);
 			});
 			break;
 		case JOB_MAGICIAN:
 			button = createButton(212, designResolutionSize.height - 371,
 				"charcreate/create3/radio3_1-1.png", "charcreate/create3/radio3_1-2.png",
 				"charcreate/create3/radio3_1-3.png", "", [this](Ref* sender) {
-				setJobDescSprite(JOB_MAGICIAN);
-				refreshJobButtonStatus((Button*)sender);
+				refreshJobButtonStatus((Button*)sender, JOB_MAGICIAN);
 			});
 			break;
 		case JOB_TRANSFORMER:
 			button = createButton(263, designResolutionSize.height - 320,
 				"charcreate/create3/radio4_1-1.png", "charcreate/create3/radio4_1-2.png",
 				"charcreate/create3/radio4_1-3.png", "", [this](Ref* sender) {
-				setJobDescSprite(JOB_TRANSFORMER);
-				refreshJobButtonStatus((Button*)sender);
+				refreshJobButtonStatus((Button*)sender, JOB_TRANSFORMER);
 			});
 			break;
 		default:
@@ -162,7 +140,7 @@ Button* CharacterCreate2::initJobButton(ePlayerJob job, string nodeName)
 	return button;
 }
 
-void CharacterCreate2::refreshJobButtonStatus(Button* currentToggleButton)
+void CharacterCreate2::refreshJobButtonStatus(Button* currentToggleButton, E_PLAYER_JOB job)
 {
 	if (currentToggleButton)
 	{
@@ -181,17 +159,80 @@ void CharacterCreate2::refreshJobButtonStatus(Button* currentToggleButton)
 			nextButton->setBright(true);
 		}
 
+		setJobDescSprite(job);
 		currentToggleButton->setClicked(true);
+		selectedJob = job;
 	}
 }
 
 void CharacterCreate2::onPreButtonClick()
 {
-	Director::getInstance()->replaceScene(CharacterCreate1::createScene());
+	if (!proceeding)
+	{
+		Director::getInstance()->replaceScene(CharacterCreate1::createScene());
+	}
+}
+
+void CharacterCreate2::onLoadResourceCallback(Texture2D* texture)
+{
+	log(texture->getName());
 }
 
 void CharacterCreate2::onNextButtonClick()
 {
+	if (swirlSprite->getNumberOfRunningActions() == 0)
+	{
+		asyncLoadResources("MotionData_Role/BODY_begin_000001-{n}.pvr.ccz", 0, 2, 
+			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
+		asyncLoadResources("MotionData_Role/BODY_begin_000003-{n}.pvr.ccz", 0, 2,
+			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
+		asyncLoadResources("MotionData_Role/LEG_begin_000002-{n}.pvr.ccz", 0, 2,
+			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
+		asyncLoadResources("MotionData_Role/LEG_begin_000004-{n}.pvr.ccz", 0, 2,
+			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
+		asyncLoadResources("MotionData_Role/FEET_begin_000005-{n}.pvr.ccz", 0, 2,
+			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
+		asyncLoadResources("MotionData_Role/FEET_begin_000006-{n}.pvr.ccz", 0, 2,
+			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
+		asyncLoadResources("MotionData_Role/FACE_face_011-{n}.pvr.ccz", 0, 0, 
+			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
+		asyncLoadResources("MotionData_Role/INNERHAIR_innerhair_09-{n}.pvr.ccz", 0, 0,
+			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
+		asyncLoadResources("MotionData_Role/OUTERHAIR_outerhair_09-{n}.pvr.ccz", 0, 0,
+			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
+
+		proceeding = true;
+
+		switch (selectedJob)
+		{
+			case JOB_SWORDMAN:
+				swirlSprite->setPosition(89, designResolutionSize.height - 320);
+				break;
+			case JOB_BOWMAN:
+				swirlSprite->setPosition(140, designResolutionSize.height - 371);
+				break;
+			case JOB_MAGICIAN:
+				swirlSprite->setPosition(212, designResolutionSize.height - 371);
+				break;
+			case JOB_TRANSFORMER:
+				swirlSprite->setPosition(263, designResolutionSize.height - 320);
+				break;
+			default:
+				break;
+		}
+
+		swirlSprite->setVisible(true);
+		swirlSprite->runAction(Sequence::create(
+			Animate::create(createAnimation("charcreate/create3/swirl_1", 8, 0.4f, false, false)),
+			CallFuncN::create(this, callfuncN_selector(CharacterCreate2::onAfterSelecteJob)), NULL
+		));
+	}
+}
+
+void CharacterCreate2::onAfterSelecteJob(Node * pSender)
+{
+	CharacterCreate3::setPlayerJob(selectedJob);
+	Director::getInstance()->replaceScene(CharacterCreate3::createScene());
 }
 
 void CharacterCreate2::update(float dt)

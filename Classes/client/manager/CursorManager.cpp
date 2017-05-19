@@ -35,7 +35,7 @@ void CursorManager::setCursor(CursorIconType iconType)
 			else
 			{
 				// replace using another cursor 
-				m_cursorSprite->setDisplayFrame(getSpriteFrameByName(cursorInfo.spriteName + "-1.png"));
+				m_cursorSprite->setSpriteFrame(getSpriteFrameByName(cursorInfo.spriteName + "-1.png"));
 			}
 
 			m_cursorSprite->runAction(Animate::create(animation));
@@ -60,7 +60,7 @@ void CursorManager::addCursorToLayer(Layer* layer)
 			isRetained = true;
 		}
 
-		layer->addChild(this->m_cursorSprite, 10000);
+		layer->addChild(this->m_cursorSprite, Z_ORDER_MOUSE);
 		if (isRetained)
 		{
 			m_cursorSprite->release();
