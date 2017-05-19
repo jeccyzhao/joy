@@ -94,14 +94,14 @@ VS_VERSION_INFO VERSIONINFO
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
-        BLOCK "040904B0"
+        BLOCK "040904b0"
         BEGIN
-            VALUE "FileDescription", "game Module"
+            VALUE "FileDescription", "JoyXY"
             VALUE "FileVersion", "1, 0, 0, 1"
-            VALUE "InternalName", "game"
+            VALUE "InternalName", "joyxy"
             VALUE "LegalCopyright", "Copyright "
-            VALUE "OriginalFilename", "game.exe"
-            VALUE "ProductName", "game Module"
+            VALUE "OriginalFilename", "joyxy.exe"
+            VALUE "ProductName", "Game4Fun"
             VALUE "ProductVersion", "1, 0, 0, 1"
         END
     END

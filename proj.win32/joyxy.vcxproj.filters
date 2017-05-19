@@ -106,6 +106,12 @@
     <Filter Include="src\client\scene\intro\advice">
       <UniqueIdentifier>{48de31e8-bfbc-4f0d-a556-436d8108a20d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\client\ui\ctrls">
+      <UniqueIdentifier>{576e4931-6fde-46e3-9981-cba36461de0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\misc\character">
+      <UniqueIdentifier>{6aead3b8-4749-44d1-b344-b9592983e4e2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -179,6 +185,21 @@
     </ClCompile>
     <ClCompile Include="..\Classes\client\scene\intro\IntroSceneBase.cpp">
       <Filter>src\client\scene\intro</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\scene\intro\character\create\CharacterCreateBase.cpp">
+      <Filter>src\client\scene\intro\character\create</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\scene\intro\character\create\CharacterCreate2.cpp">
+      <Filter>src\client\scene\intro\character\create</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\scene\intro\character\create\CharacterCreate3.cpp">
+      <Filter>src\client\scene\intro\character\create</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\ui\ctrls\CursorTextField.cpp">
+      <Filter>src\client\ui\ctrls</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\misc\character\RoleModel.cpp">
+      <Filter>src\client\misc\character</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -274,6 +295,24 @@
     </ClInclude>
     <ClInclude Include="..\Classes\client\scene\intro\IntroSceneBase.h">
       <Filter>src\client\scene\intro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\scene\intro\character\create\CharacterCreateBase.h">
+      <Filter>src\client\scene\intro\character\create</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\misc\PlayerData.h">
+      <Filter>src\client\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\scene\intro\character\create\CharacterCreate2.h">
+      <Filter>src\client\scene\intro\character\create</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\scene\intro\character\create\CharacterCreate3.h">
+      <Filter>src\client\scene\intro\character\create</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\ui\ctrls\CursorTextField.h">
+      <Filter>src\client\ui\ctrls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\misc\character\RoleModel.h">
+      <Filter>src\client\misc\character</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
