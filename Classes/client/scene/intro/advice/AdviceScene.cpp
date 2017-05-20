@@ -25,6 +25,8 @@ bool AdviceScene::init()
 		return false;
 	}
 
+	preLoadResources("ui/stage1-{n}.plist", 0, 1);
+
 	isSceneFaded = false;
 
 	addBackgroundToLayer(this);

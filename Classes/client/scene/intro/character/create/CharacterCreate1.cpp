@@ -24,6 +24,8 @@ bool CharacterCreate1::init()
 		return false;
 	}
 
+	preLoadResources("ui/charcreate-{n}.plist");
+
 	addBackgroundToLayer(this);
 	addChild(getSprite("charcreate/create1/back_1-1.png"));
 	addChild(getSprite("charcreate/create1/xinxiang_1-1.png", 0, designResolutionSize.height, Vec2::ANCHOR_TOP_LEFT)); 

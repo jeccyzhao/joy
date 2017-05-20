@@ -18,7 +18,7 @@ private:
 	virtual ~DBUtil();
 public:
 
-	static DBUtil* getInstance(string dbName);
+	static DBUtil* getInstance();
     static void destoryInstance();
 
 	/**

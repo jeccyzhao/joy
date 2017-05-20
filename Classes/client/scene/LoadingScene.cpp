@@ -74,7 +74,7 @@ void LoadingScene::loadLocalResources(vector<string> resources)
 {
 	for (string resource : resources)
 	{
-		TextureCache::getInstance()->addImageAsync(resource + ".pvr.ccz",
+		Director::getInstance()->getTextureCache()->addImageAsync(resource + ".pvr.ccz",
 			CC_CALLBACK_1(LoadingScene::onLoadResourceCallback, this, resource));
 	}
 }

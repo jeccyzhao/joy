@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>guanghan_stage001/00000329.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{1600,1200}</string>
+                <key>spriteSourceSize</key>
+                <string>{1600,1200}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{1600,1200}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
+            <key>realTextureFileName</key>
+            <string>guanghan_stage001-2.pvr.ccz</string>
+            <key>size</key>
+            <string>{1602,1202}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:e130a429531ca83b8579caf299945b79:6549919d4caf166a9196e1b810f777ef:898de6852a22fb10b6a1ededba78b835$</string>
+            <key>textureFileName</key>
+            <string>guanghan_stage001-2.pvr.ccz</string>
+        </dict>
+    </dict>
+</plist>

@@ -148,6 +148,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Client\Items\EquipmentItem.cpp" />
     <ClCompile Include="..\Classes\Client\Items\ItemBase.cpp" />
     <ClCompile Include="..\Classes\client\manager\CursorManager.cpp" />
+    <ClCompile Include="..\Classes\client\manager\GameDataManager.cpp" />
     <ClCompile Include="..\Classes\client\manager\PlayerRoleManager.cpp" />
     <ClCompile Include="..\Classes\client\manager\ResourceManager.cpp" />
     <ClCompile Include="..\Classes\client\misc\character\RoleModel.cpp" />
@@ -182,6 +183,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Client\Items\ItemBase.h" />
     <ClInclude Include="..\Classes\Client\Items\ItemManager.h" />
     <ClInclude Include="..\Classes\client\manager\CursorManager.h" />
+    <ClInclude Include="..\Classes\client\manager\GameDataManager.h" />
     <ClInclude Include="..\Classes\client\manager\PlayerRoleManager.h" />
     <ClInclude Include="..\Classes\client\manager\ResourceManager.h" />
     <ClInclude Include="..\Classes\client\misc\character\RoleModel.h" />
@@ -205,6 +207,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\engine\extensions\crypto\base64\libb64.h" />
     <ClInclude Include="..\Classes\engine\extensions\crypto\md5\md5.h" />
     <ClInclude Include="..\Classes\engine\extensions\crypto\sha1\sha1.h" />
+    <ClInclude Include="..\Classes\engine\extensions\rapidxml\rapidxml.hpp" />
+    <ClInclude Include="..\Classes\engine\extensions\rapidxml\rapidxml_iterators.hpp" />
+    <ClInclude Include="..\Classes\engine\extensions\rapidxml\rapidxml_print.hpp" />
+    <ClInclude Include="..\Classes\engine\extensions\rapidxml\rapidxml_utils.hpp" />
     <ClInclude Include="..\Classes\Engine\Physical\PhysicsShapeCache.h" />
     <ClInclude Include="..\Classes\Engine\Scene\SceneLayer.h" />
     <ClInclude Include="..\Classes\Engine\Singleton.h" />

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>GLASSES_glass_000044_stand_1_1-1.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{400,200}</string>
+                <key>spriteSourceSize</key>
+                <string>{400,200}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{400,200}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
+            <key>realTextureFileName</key>
+            <string>GLASSES_glass_000044-0.pvr.ccz</string>
+            <key>size</key>
+            <string>{402,202}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:503461cb7aa5f6e9c74bb122103aa709:2db77471d177757f7e3488933c8d37e4:2b3f3b7a4d721b5d01846943dddd8d6d$</string>
+            <key>textureFileName</key>
+            <string>GLASSES_glass_000044-0.pvr.ccz</string>
+        </dict>
+    </dict>
+</plist>

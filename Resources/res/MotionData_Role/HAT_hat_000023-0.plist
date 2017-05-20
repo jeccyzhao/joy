@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>HAT_hat_000023_ladder_1-1.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{400,200}</string>
+                <key>spriteSourceSize</key>
+                <string>{400,200}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{400,200}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
+            <key>realTextureFileName</key>
+            <string>HAT_hat_000023-0.pvr.ccz</string>
+            <key>size</key>
+            <string>{402,202}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:9be9e80c9e5460fe6ed8cc8919905e20:0f428536d26b9c10fb734a71d95bb39a:165947c54051502e825d3940e41a2272$</string>
+            <key>textureFileName</key>
+            <string>HAT_hat_000023-0.pvr.ccz</string>
+        </dict>
+    </dict>
+</plist>

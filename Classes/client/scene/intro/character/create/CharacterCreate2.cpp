@@ -36,6 +36,8 @@ bool CharacterCreate2::init()
 		return false;
 	}
 
+	preLoadResources("ui/charcreate-{n}.plist");
+
 	addBackgroundToLayer(this);
 	addHuddleBackgroundToLayer(this, huddle);
 
@@ -223,7 +225,7 @@ void CharacterCreate2::onNextButtonClick()
 
 		swirlSprite->setVisible(true);
 		swirlSprite->runAction(Sequence::create(
-			Animate::create(createAnimation("charcreate/create3/swirl_1", 8, 0.4f, false, false)),
+			Animate::create(createAnimation("charcreate/create3/swirl_1", 8, 0.3f, false, false)),
 			CallFuncN::create(this, callfuncN_selector(CharacterCreate2::onAfterSelecteJob)), NULL
 		));
 	}

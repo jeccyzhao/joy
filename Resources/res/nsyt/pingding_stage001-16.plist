@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>pingding_stage001/00000570.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{2400,3600}</string>
+                <key>spriteSourceSize</key>
+                <string>{2400,3600}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{2400,3600}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
+            <key>realTextureFileName</key>
+            <string>pingding_stage001-16.pvr.ccz</string>
+            <key>size</key>
+            <string>{2402,3602}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:ee56cbe0168f2bb3658f728613cecd62:ac921a26fa67f1b1f293ce761381b4c9:b455fc7fb567e6a2d0687b1a4a023628$</string>
+            <key>textureFileName</key>
+            <string>pingding_stage001-16.pvr.ccz</string>
+        </dict>
+    </dict>
+</plist>

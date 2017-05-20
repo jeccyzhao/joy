@@ -95,12 +95,24 @@ const char* gbk2UTF8(const char* gb2312)
 }
 
 
-Animation* createAnimation(const std::string &spriteName, int frames, float delay, bool loop, bool restoreOriginalFrame)
+Animation* createAnimation(const std::string &spriteName, int frames, float delay, bool loop, bool restoreOriginalFrame, bool isPattern)
 {
+	std::string pattern = "{n}";
 	Vector<SpriteFrame*> spriteFrames;
 	for (int i = 1; i <= frames; i++)
 	{
-		spriteFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName(spriteName + "-" + to_string(i) + ".png"));
+		if (!isPattern)
+		{
+			spriteFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName(spriteName + "-" + to_string(i) + ".png"));
+		}
+		else
+		{
+			string::size_type pos = spriteName.find(pattern);
+			std::string resource = spriteName;
+			resource.replace(pos, pattern.length(), to_string(i));
+
+			spriteFrames.pushBack(SpriteFrameCache::getInstance()->getSpriteFrameByName(resource));
+		}
 	}
 
 	Animation *animation = Animation::createWithSpriteFrames(spriteFrames);
@@ -155,8 +167,7 @@ void asyncLoadResources(const std::string resourcePattern, int start, int end,
 		{
 			std::string resource = resourcePattern;
 			resource.replace(pos, pattern.length(), to_string(i));
-		
-			TextureCache::getInstance()->addImageAsync(resource, callback);
+			Director::getInstance()->getTextureCache()->addImageAsync(resource, callback);
 		}
 	}
 }

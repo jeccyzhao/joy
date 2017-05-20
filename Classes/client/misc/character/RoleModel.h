@@ -1,55 +1,97 @@
 #pragma once
 
+#include "cocos2d.h"
 #include "engine\util\GameUtils.h"
 #include "client\misc\PlayerData.h"
 #include "client\Client.h"
-#include "cocos2d.h"
+#include "client\manager\GameDataManager.h"
+
 
 USING_NS_CC;
 
 enum E_DRESS_TYPE { BEGIN_HEAD, BEGIN_BODY, BEGIN_LEG, EYE };
 const std::string E_ACTION_STR[10] = { "sit", "jump", "stand", "ladder", "crawl", "rope", "run", "magic", "onehand", "twohands" };
 
+struct AnimationFrame
+{
+	std::string id;
+	std::string actionName;
+	std::string actionCode;
+	int frames;
+};
+
 struct DressSprite
 {
 	Sprite* sprite;
 	std::string id;
 	E_PLAYER_ACTION action;
+	Animation* animation;
 	float x;
 	float y;
 	std::string spriteName;
+	bool hasAnimation;
 
 	DressSprite(std::string id, E_PLAYER_ACTION action = STAND, float x = 0, float y = 0)
 	{
 		this->id = id;
-		this->action = action;
 		this->x = x;
 		this->y = y;
 
-		sprite = getSprite(getSpriteName(), this->x, this->y, Vec2::ANCHOR_TOP_LEFT);
-		sprite->setLocalZOrder(Z_ORDER_ROLE);
+		this->spriteName = getSpriteName(id, action);
+		this->setAction(action);
+
+		this->sprite = getSprite(this->spriteName, this->x, this->y, Vec2::ANCHOR_TOP_LEFT);
+		this->sprite->setLocalZOrder(Z_ORDER_ROLE);
+
+		playAnimation(this->action);
 	}
 
-	std::string getSpriteName(int type = 1)
+	void playAnimation (E_PLAYER_ACTION action)
 	{
-		return getSpriteNameById(this->id, this->action, type);
+		if (this->hasAnimation)
+		{
+			this->sprite->runAction(Animate::create(this->animation));
+		}
 	}
 
-	std::string getSpriteNameById(const std::string id, E_PLAYER_ACTION action, int type = 1)
+	void setAction(E_PLAYER_ACTION targetAction)
+	{
+		if (this->action != targetAction)
+		{
+			this->action = targetAction;
+			int frames = GameDataManager::Get()->getMotionDataFrames(this->id, E_ACTION_STR[targetAction], "1_1");
+			if (frames > 1)
+			{
+				this->animation = createAnimation(getSpriteName(1, true), frames, 0.5f, true, true, true);
+				this->hasAnimation = true;
+			}
+			else
+			{
+				this->hasAnimation = false;
+			}
+		}
+	}
+
+	std::string getSpriteName(int type = 1, bool isPattern = false)
+	{
+		return getSpriteName(this->id, this->action, type, isPattern);
+	}
+
+	std::string getSpriteName(const std::string id, E_PLAYER_ACTION action, int type = 1, bool isPattern = false)
 	{
 		std::string appendix = "";
+		std::string index = (isPattern ? "{n}" : "1");
 		switch (action)
 		{
 			case JUMP || LADDER || ROPE || CRAWL || SIT:
-				appendix = "-1";
+				appendix = "-" + index;
 				break;
 			default:
-				appendix = to_string(type) + "_1-1";
+				appendix = to_string(type) + "_1-" + index;
 				break;
 		}
 
-		this->spriteName = id + "_" + E_ACTION_STR[action] + "_" + appendix + ".png";
-		return this->spriteName;
+		return id + "_" + E_ACTION_STR[action] + "_" + appendix + ".png";;
 	}
 
 	void changeDress(std::string id)

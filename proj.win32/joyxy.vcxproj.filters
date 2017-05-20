@@ -112,6 +112,9 @@
     <Filter Include="src\client\misc\character">
       <UniqueIdentifier>{6aead3b8-4749-44d1-b344-b9592983e4e2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\engine\extensions\rapidxml">
+      <UniqueIdentifier>{52922a13-7098-4ac1-bd94-493798d4ffe9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -200,6 +203,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\client\misc\character\RoleModel.cpp">
       <Filter>src\client\misc\character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\manager\GameDataManager.cpp">
+      <Filter>src\client\manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -313,6 +319,21 @@
     </ClInclude>
     <ClInclude Include="..\Classes\client\misc\character\RoleModel.h">
       <Filter>src\client\misc\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\extensions\rapidxml\rapidxml.hpp">
+      <Filter>src\engine\extensions\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\extensions\rapidxml\rapidxml_iterators.hpp">
+      <Filter>src\engine\extensions\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\extensions\rapidxml\rapidxml_print.hpp">
+      <Filter>src\engine\extensions\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\engine\extensions\rapidxml\rapidxml_utils.hpp">
+      <Filter>src\engine\extensions\rapidxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\manager\GameDataManager.h">
+      <Filter>src\client\manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

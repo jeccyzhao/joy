@@ -15,11 +15,11 @@ DBUtil::~DBUtil()
 {
 }
  
-DBUtil* DBUtil::getInstance(string dbName) 
+DBUtil* DBUtil::getInstance() 
 {
     if (!s_pInstance) 
 	{
-        s_pInstance = new DBUtil(dbName);
+        s_pInstance = new DBUtil();
     }
     return s_pInstance;
 }
@@ -55,6 +55,8 @@ void DBUtil::openDBWithName(std::string aDataBaseName)
         sqlite3_free(errMsg);
         errMsg = NULL;
     }
+
+	log("Database connected.");
 }
  
 /**
@@ -77,7 +79,7 @@ void DBUtil::closeDB() {
  */
 void DBUtil::createTable(std::string aSql, std::string aTableName) {
      
-    openDBWithName(m_dbName);
+    //openDBWithName(m_dbName);
      
     if (!isExistTableByName(aTableName)) {
         char* errMsg = NULL;
@@ -92,7 +94,7 @@ void DBUtil::createTable(std::string aSql, std::string aTableName) {
         }
     }
      
-    closeDB();
+    //closeDB();
 }
  
 /**
@@ -147,7 +149,7 @@ bool DBUtil::isExistTableByName(std::string aTabelName) {
  */
 void DBUtil::deleteTable(std::string aSql, std::string aTableName) {
      
-    openDBWithName(m_dbName);
+    //openDBWithName(m_dbName);
      
     beginTransaction();
      
@@ -167,7 +169,7 @@ void DBUtil::deleteTable(std::string aSql, std::string aTableName) {
      
     comitTransaction(result);
      
-    closeDB();
+    //closeDB();
      
 }
  
@@ -180,7 +182,7 @@ void DBUtil::deleteTable(std::string aSql, std::string aTableName) {
  */
 void DBUtil::insertData(std::string aSql) {
      
-    openDBWithName(m_dbName);
+    //openDBWithName(m_dbName);
      
     beginTransaction();
      
@@ -197,7 +199,7 @@ void DBUtil::insertData(std::string aSql) {
      
     comitTransaction(result);
      
-    closeDB();
+    //closeDB();
 }
  
 /**
@@ -209,7 +211,7 @@ void DBUtil::insertData(std::string aSql) {
  */
 void DBUtil::deleteData(std::string aSql) {
      
-    openDBWithName(m_dbName);
+    //openDBWithName(m_dbName);
      
     beginTransaction();
      
@@ -226,7 +228,7 @@ void DBUtil::deleteData(std::string aSql) {
      
     comitTransaction(result);
      
-    closeDB();
+    //closeDB();
      
 }
  
@@ -237,7 +239,7 @@ void DBUtil::deleteData(std::string aSql) {
  */
 void DBUtil::updateData(std::string aSql) {
      
-    openDBWithName(m_dbName);
+    //openDBWithName(m_dbName);
      
     beginTransaction();
      
@@ -254,7 +256,7 @@ void DBUtil::updateData(std::string aSql) {
      
     comitTransaction(result);
      
-    closeDB();
+    //closeDB();
 }
  
 /**
@@ -283,9 +285,9 @@ std::vector<std::map<std::string, std::string> > DBUtil::searchData(std::string 
 //    long long int startTime = getNowTime();
 //    CCLOG("startTime=%lld", getNowTime());
     
-	log("DBUtil::searchData with sql: %s", aSql);
+	log("DBUtil::searchData with sql: %s", aSql.c_str());
 
-    openDBWithName(m_dbName);
+    //openDBWithName(m_dbName);
      
     //vector是查询的结果集，每一个结果都存在map中
     //map的第一string是key(字段名)，第二个string是value(查询出的对应数据)
@@ -302,7 +304,7 @@ std::vector<std::map<std::string, std::string> > DBUtil::searchData(std::string 
         errMsg = NULL;
     }
      
-    closeDB();
+    //closeDB();
      
 //    long long int endTime = getNowTime();
 //    CCLOG("endTime=%lld", endTime);
@@ -331,7 +333,7 @@ int searchDataCountCallback(void* para, int n_column, char** column_value, char*
  */
 int DBUtil::searchDataCount(std::string aSql) {
      
-    openDBWithName(m_dbName);
+    //openDBWithName(m_dbName);
     log("DBUtil::searchDataCount with sql: %s", aSql);
 
     int count = 0;
@@ -346,7 +348,7 @@ int DBUtil::searchDataCount(std::string aSql) {
         errMsg = NULL;
     }
      
-    closeDB();
+    //closeDB();
      
     return count;
 }

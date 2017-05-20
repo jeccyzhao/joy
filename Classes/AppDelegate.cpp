@@ -2,6 +2,7 @@
 #include "HelloWorldScene.h"
 #include "client\scene\LoadingScene.h"
 #include "client\scene\intro\advice\AdviceScene.h"
+#include "client\scene\intro\character\create\CharacterCreate3.h"
 #include "client\scene\intro\login\LoginScene.h"
 #include "client\Client.h"
 #include "engine\util\GameUtils.h"
@@ -83,8 +84,8 @@ bool AppDelegate::applicationDidFinishLaunching()
 	FileUtils::getInstance()->addSearchPath("res");
 
     // create a scene. it's an autorelease object
-    auto scene = LoadingScene::createScene("ui/ui-", 0);
-	//auto scene = LoginScene::createScene();
+    //auto scene = LoadingScene::createScene("ui/ui-", 0);
+	auto scene = CharacterCreate3::createScene();
 
     // run
     director->runWithScene(scene);

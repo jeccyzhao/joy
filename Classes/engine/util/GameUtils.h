@@ -87,7 +87,12 @@ Button* createButton(const float x, const float y,
  * @delay: delay per unit of animation
  * @loop: flag to indicate whether the animation looped or not
  */
-Animation* createAnimation(const std::string &spriteName, int frames, float delay, bool loop = true, bool restoreOriginalFrame = true);
+Animation* createAnimation(const std::string &spriteName, 
+						   int frames, 
+						   float delay, 
+						   bool loop = true, 
+						   bool restoreOriginalFrame = true,
+						   bool isPattern = false);
 
 /**
   * Pre-load all given resources

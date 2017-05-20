@@ -27,6 +27,9 @@ bool ServerChannelScene::init()
 		return false;
 	}
 
+	preLoadResources("ui/stage1-{n}.plist", 0, 1);
+	preLoadResources("ui/serverselect-{n}.plist");
+
 	addBackgroundToLayer(this);
 	addChild(getSprite("stage1/logo_1-1.png", 282, 583, Vec2::ANCHOR_TOP_LEFT));
 	addChild(getSprite("serverselect/back_1-1.png", 270, designResolutionSize.height - 225, Vec2::ANCHOR_TOP_LEFT));

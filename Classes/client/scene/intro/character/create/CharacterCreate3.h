@@ -40,6 +40,7 @@ protected:
 	void onNextButtonClick() override;
 
 private:
+	void loadRoleResources();
 	static E_PLAYER_JOB job;
 	Button* createBtn;
 	RoleModel* roleModel;

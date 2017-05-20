@@ -23,6 +23,8 @@ bool CharacterSelectScene::init()
 		return false;
 	}
 
+	preLoadResources("ui/charselect-{n}.plist");
+
 	addBackgroundToLayer(this);
 	
 	addChild(createButton(632, 600 - 530, "charselect/back_1", [this](Ref* sender) {

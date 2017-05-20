@@ -39,6 +39,8 @@ bool CharacterCreate3::init()
 		return false;
 	}
 
+	preLoadResources("ui/charcreate-{n}.plist");
+
 	sexual = MALE;
 	currentSexIndex = 1;
 	currentEyeIndex = 1;
@@ -124,10 +126,24 @@ bool CharacterCreate3::init()
 	addChild(createBtn);
 	addFomasToLayer(this);
 
-	// initialize role
+	this->loadRoleResources();
+	
+	roleModel = RoleModel::create();
+	roleModel->setPosition(430, designResolutionSize.height - 30); 
+	addChild(roleModel);
+
+	CursorManager::Get()->addCursorToLayer(this);
+	scheduleUpdate();
+
+	return true;
+}
+
+void CharacterCreate3::loadRoleResources()
+{
+	// initialize plist resources as pvr.ccz was loaded in previous scene 
 	preLoadResources("MotionData_Role/BODY_begin_000001-{n}.plist", 0, 2);
 	preLoadResources("MotionData_Role/BODY_begin_000003-{n}.plist", 0, 2);
-	preLoadResources("MotionData_Role/LEG_begin_000002-{n}.plist", 0, 2); 
+	preLoadResources("MotionData_Role/LEG_begin_000002-{n}.plist", 0, 2);
 	preLoadResources("MotionData_Role/LEG_begin_000004-{n}.plist", 0, 2);
 	preLoadResources("MotionData_Role/FEET_begin_000005-{n}.plist", 0, 2);
 	preLoadResources("MotionData_Role/FEET_begin_000006-{n}.plist", 0, 2);
@@ -135,15 +151,6 @@ bool CharacterCreate3::init()
 	preLoadResources("MotionData_Role/INNERHAIR_innerhair_09-{n}.plist");
 	preLoadResources("MotionData_Role/OUTERHAIR_outerhair_09-{n}.plist");
 
-	roleModel = RoleModel::create();
-	roleModel->setPosition(430, designResolutionSize.height - 30); 
-	
-	addChild(roleModel, Z_ORDER_ROLE);
-
-	CursorManager::Get()->addCursorToLayer(this);
-	scheduleUpdate();
-
-	return true;
 }
 
 void CharacterCreate3::onSexButtonClick(int inc)

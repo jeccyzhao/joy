@@ -13,6 +13,8 @@ IntroSceneBase::~IntroSceneBase()
 
 IntroSceneBase::IntroSceneBase()
 {
+	preLoadResources("ui/stage1-{n}.plist", 0, 1);
+
 	fomas.pushBack(getSprite("stage1/piaoyun2_1-1.png", 550, 0));
 	fomas.pushBack(getSprite("stage1/piaoyun3_1-1.png", 525, 0));
 	fomas.pushBack(getSprite("stage1/piaoyun3_1-1.png", 100, 0));

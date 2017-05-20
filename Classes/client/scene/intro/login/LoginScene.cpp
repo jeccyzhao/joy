@@ -25,6 +25,9 @@ bool LoginScene::init()
 		return false;
 	}
 
+	preLoadResources("ui/stage1-{n}.plist", 0, 1);
+	preLoadResources("ui/Login-{n}.plist");
+
 	addChild(getSprite("stage1/bg_1-1.png"));
 	addChild(getSprite("stage1/logo_1-1.png", 282, 583, Vec2::ANCHOR_TOP_LEFT));
 	addChild(getSprite("Login/back_1-1.png"));

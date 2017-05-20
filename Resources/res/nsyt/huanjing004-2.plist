@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>huanjing004/00000045.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{3200,1500}</string>
+                <key>spriteSourceSize</key>
+                <string>{3200,1500}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{3200,1500}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
+            <key>realTextureFileName</key>
+            <string>huanjing004-2.pvr.ccz</string>
+            <key>size</key>
+            <string>{3202,1502}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:6424c66219eea1ae36ac7ab92acff8f1:4c676ab70236d9982e5fcc9b45b2b4e8:fd16af629c61ae1a2a71ff376ce37add$</string>
+            <key>textureFileName</key>
+            <string>huanjing004-2.pvr.ccz</string>
+        </dict>
+    </dict>
+</plist>

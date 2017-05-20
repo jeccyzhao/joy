@@ -1,4 +1,5 @@
 #include "RoleModel.h"
+#include "client\manager\GameDataManager.h"
 
 RoleModel::RoleModel()
 {
@@ -47,6 +48,8 @@ bool RoleModel::init()
 	addChild(bodyBegin->sprite);
 	addChild(face->sprite);
 	addChild(eye->sprite);
+
+	this->setLocalZOrder(Z_ORDER_ROLE);
 
 	return true;
 }
