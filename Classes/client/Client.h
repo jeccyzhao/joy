@@ -44,6 +44,8 @@ static const int MAXIMUM_PLIST_ITERATION = 100;
 
 static const int NUM_LINES = 5;
 
+static const std::string ROLE_MOTION_DATA_PATH = "MotionData_Role";
+
 // The flag to indicate that it will draw all objects only for debug purpose
 //static const bool DEBUG_DRAW = true;
 

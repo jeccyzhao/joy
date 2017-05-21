@@ -167,7 +167,10 @@ void asyncLoadResources(const std::string resourcePattern, int start, int end,
 		{
 			std::string resource = resourcePattern;
 			resource.replace(pos, pattern.length(), to_string(i));
-			Director::getInstance()->getTextureCache()->addImageAsync(resource, callback);
+			if (FileUtils::getInstance()->isFileExist(resource))
+			{
+				Director::getInstance()->getTextureCache()->addImageAsync(resource, callback);
+			}
 		}
 	}
 }

@@ -3,6 +3,7 @@
 #include "client\scene\LoadingScene.h"
 #include "client\scene\intro\advice\AdviceScene.h"
 #include "client\scene\intro\character\create\CharacterCreate3.h"
+#include "client\scene\intro\character\create\CharacterCreate2.h"
 #include "client\scene\intro\login\LoginScene.h"
 #include "client\Client.h"
 #include "engine\util\GameUtils.h"
@@ -85,7 +86,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 
     // create a scene. it's an autorelease object
     //auto scene = LoadingScene::createScene("ui/ui-", 0);
-	auto scene = CharacterCreate3::createScene();
+	auto scene = CharacterCreate2::createScene();
 
     // run
     director->runWithScene(scene);

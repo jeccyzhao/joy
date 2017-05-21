@@ -1,6 +1,7 @@
 #include "CharacterCreate3.h"
 #include "engine\util\GameUtils.h"
 #include "client\manager\CursorManager.h"
+#include "client\manager\RoleCreationManager.h"
 #include "client\scene\intro\character\create\CharacterCreate2.h"
 #include "client\Client.h"
 #include "client\ui\ctrls\CursorTextField.h"
@@ -80,8 +81,8 @@ bool CharacterCreate3::init()
 	
 	// sprites of sexual
 	sexTextSprite = getSprite("charcreate/create4/xinbie_1-1.png", 456, designResolutionSize.height - 165, Vec2::ANCHOR_TOP_LEFT);
-	addChild(createButton(386, designResolutionSize.height - 162, "charcreate/create4/left_1",  [this](Ref* sender) {onSexButtonClick(-1); }));
-	addChild(createButton(560, designResolutionSize.height - 162, "charcreate/create4/right_1", [this](Ref* sender) {onSexButtonClick(1); }));
+	addChild(createButton(386, designResolutionSize.height - 162, "charcreate/create4/left_1",  [this](Ref* sender) { onSexButtonClick(-1); }));
+	addChild(createButton(560, designResolutionSize.height - 162, "charcreate/create4/right_1", [this](Ref* sender) { onSexButtonClick(1); }));
 	addChild(sexTextSprite);
 
 	// sprites of hairs
@@ -128,9 +129,21 @@ bool CharacterCreate3::init()
 
 	this->loadRoleResources();
 	
+	/*
 	roleModel = RoleModel::create();
 	roleModel->setPosition(430, designResolutionSize.height - 30); 
+	roleModel->playAnimation(STAND);
 	addChild(roleModel);
+	*/
+
+	RoleCreationManager* rcm = new RoleCreationManager();
+	rcm->initRole(job, MALE);
+
+	this->roleModel = rcm->getRole();
+	this->roleModel->show(430, designResolutionSize.height - 30);
+	addChild(this->roleModel);
+
+	addChild(getSprite("charcreate/create4/cloud_1-1.png", 570, designResolutionSize.height - 198, Vec2::ANCHOR_TOP_LEFT));
 
 	CursorManager::Get()->addCursorToLayer(this);
 	scheduleUpdate();
@@ -142,15 +155,15 @@ void CharacterCreate3::loadRoleResources()
 {
 	// initialize plist resources as pvr.ccz was loaded in previous scene 
 	preLoadResources("MotionData_Role/BODY_begin_000001-{n}.plist", 0, 2);
-	preLoadResources("MotionData_Role/BODY_begin_000003-{n}.plist", 0, 2);
-	preLoadResources("MotionData_Role/LEG_begin_000002-{n}.plist", 0, 2);
-	preLoadResources("MotionData_Role/LEG_begin_000004-{n}.plist", 0, 2);
+	//preLoadResources("MotionData_Role/BODY_begin_000003-{n}.plist", 0, 2);
+	preLoadResources("MotionData_Role/LEG_begin_000002-{n}.plist",  0, 2);
+	//preLoadResources("MotionData_Role/LEG_begin_000004-{n}.plist",  0, 2);
 	preLoadResources("MotionData_Role/FEET_begin_000005-{n}.plist", 0, 2);
-	preLoadResources("MotionData_Role/FEET_begin_000006-{n}.plist", 0, 2);
+	//preLoadResources("MotionData_Role/FEET_begin_000006-{n}.plist", 0, 2);
 	preLoadResources("MotionData_Role/FACE_face_011-{n}.plist");				// eye
-	preLoadResources("MotionData_Role/INNERHAIR_innerhair_09-{n}.plist");
-	preLoadResources("MotionData_Role/OUTERHAIR_outerhair_09-{n}.plist");
-
+	preLoadResources("MotionData_Role/INNERHAIR_innerhair_01-{n}.plist");
+	preLoadResources("MotionData_Role/OUTERHAIR_outerhair_01-{n}.plist");
+	preLoadResources("MotionData_Role/BANG_bang_01-{n}.plist"); 
 }
 
 void CharacterCreate3::onSexButtonClick(int inc)
@@ -259,6 +272,11 @@ void CharacterCreate3::updateHairTextSprite(bool reset)
 	}
 
 	hairTextSprite->setSpriteFrame("charcreate/create4/toufa" + to_string(sexualCode) + "_1-" + to_string(currentHairIndex) + ".png");
+
+	this->roleModel->updateDress(HAIR_BANG1, (sexual == MALE ? MALE_HAIR_BANG1[currentHairIndex - 1] : FEMALE_HAIR_BANG1[currentHairIndex - 1]));
+	this->roleModel->updateDress(HAIR_BANG2, (sexual == MALE ? MALE_HAIR_BANG2[currentHairIndex - 1] : MALE_HAIR_BANG2[currentHairIndex - 1]));
+	this->roleModel->updateDress(HAIR_INNERHAIR, (sexual == MALE ? MALE_HAIR_INNER[currentHairIndex - 1] : FEMALE_HAIR_INNER[currentHairIndex - 1]));
+	this->roleModel->updateDress(HAIR_OUTERHAIR, (sexual == MALE ? MALE_HAIR_OUTER[currentHairIndex - 1] : FEMALE_HAIR_OUTER[currentHairIndex - 1]));
 }
 
 void CharacterCreate3::onPreButtonClick()

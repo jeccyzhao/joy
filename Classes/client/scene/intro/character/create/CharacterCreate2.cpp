@@ -3,6 +3,7 @@
 #include "client\manager\CursorManager.h"
 #include "client\scene\intro\character\create\CharacterCreate1.h"
 #include "client\scene\intro\character\create\CharacterCreate3.h"
+#include "client\manager\RoleCreationManager.h"
 #include "client\Client.h"
 #include "ui\UIButton.h"
 
@@ -184,24 +185,16 @@ void CharacterCreate2::onNextButtonClick()
 {
 	if (swirlSprite->getNumberOfRunningActions() == 0)
 	{
-		asyncLoadResources("MotionData_Role/BODY_begin_000001-{n}.pvr.ccz", 0, 2, 
-			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
-		asyncLoadResources("MotionData_Role/BODY_begin_000003-{n}.pvr.ccz", 0, 2,
-			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
-		asyncLoadResources("MotionData_Role/LEG_begin_000002-{n}.pvr.ccz", 0, 2,
-			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
-		asyncLoadResources("MotionData_Role/LEG_begin_000004-{n}.pvr.ccz", 0, 2,
-			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
-		asyncLoadResources("MotionData_Role/FEET_begin_000005-{n}.pvr.ccz", 0, 2,
-			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
-		asyncLoadResources("MotionData_Role/FEET_begin_000006-{n}.pvr.ccz", 0, 2,
-			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
-		asyncLoadResources("MotionData_Role/FACE_face_011-{n}.pvr.ccz", 0, 0, 
-			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
-		asyncLoadResources("MotionData_Role/INNERHAIR_innerhair_09-{n}.pvr.ccz", 0, 0,
-			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
-		asyncLoadResources("MotionData_Role/OUTERHAIR_outerhair_09-{n}.pvr.ccz", 0, 0,
-			CC_CALLBACK_1(CharacterCreate2::onLoadResourceCallback, this));
+		asyncLoadResources("MotionData_Role/BODY_begin_000001-{n}.pvr.ccz",						0, 3);
+		asyncLoadResources("MotionData_Role/LEG_begin_000002-{n}.pvr.ccz",						0, 3);
+		asyncLoadResources("MotionData_Role/FEET_begin_000005-{n}.pvr.ccz",						0, 3);
+		asyncLoadResources("MotionData_Role/FACE_face_011-{n}.pvr.ccz",							0, 3);
+		asyncLoadResources("MotionData_Role/INNERHAIR_innerhair_01-{n}.pvr.ccz",				0, 3);
+		asyncLoadResources("MotionData_Role/OUTERHAIR_outerhair_01-{n}.pvr.ccz",				0, 3);
+		asyncLoadResources("MotionData_Role/BANG_bang_01-{n}.pvr.ccz",							0, 3);
+		asyncLoadResources("MotionData_Role/" + MALE_BODY_CLOTH[selectedJob] + "-{n}.pvr.ccz",	0, 3); 
+		asyncLoadResources("MotionData_Role/" + MALE_LEG_PANTS[selectedJob]  + "-{n}.pvr.ccz",	0, 3);
+		asyncLoadResources("MotionData_Role/" + MALE_FEET_SHOES[selectedJob] + "-{n}.pvr.ccz",	0, 3);
 
 		proceeding = true;
 
@@ -225,7 +218,7 @@ void CharacterCreate2::onNextButtonClick()
 
 		swirlSprite->setVisible(true);
 		swirlSprite->runAction(Sequence::create(
-			Animate::create(createAnimation("charcreate/create3/swirl_1", 8, 0.3f, false, false)),
+			Animate::create(createAnimation("charcreate/create3/swirl_1", 8, 0.4f, false, false)),
 			CallFuncN::create(this, callfuncN_selector(CharacterCreate2::onAfterSelecteJob)), NULL
 		));
 	}
