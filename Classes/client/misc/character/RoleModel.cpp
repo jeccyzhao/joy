@@ -3,22 +3,22 @@
 
 RoleModel::RoleModel()
 {
-	bodyBegin = new DressSprite();
-	bodyCloth = new DressSprite();
-	legBegin = new DressSprite();
-	legPants = new DressSprite();
-	feetShoes = new DressSprite();
-	feetBegin = new DressSprite();
-	faceBegin = new DressSprite();
-	faceEye = new DressSprite();
+	bodyBegin = new DressSprite(this);
+	bodyCloth = new DressSprite(this);
+	legBegin = new DressSprite(this);
+	legPants = new DressSprite(this);
+	feetShoes = new DressSprite(this);
+	feetBegin = new DressSprite(this);
+	faceBegin = new DressSprite(this);
+	faceEye = new DressSprite(this);
 	
-	arm = new DressSprite();
-	shield = new DressSprite();
+	arm = new DressSprite(this);
+	shield = new DressSprite(this);
 
-	hairBang2 = new DressSprite();
-	hairBang1 = new DressSprite();
-	hairInner = new DressSprite();
-	hairOuter = new DressSprite();
+	hairBang2 = new DressSprite(this);
+	hairBang1 = new DressSprite(this);
+	hairInner = new DressSprite(this);
+	hairOuter = new DressSprite(this);
 
 }
 
@@ -103,11 +103,7 @@ void RoleModel::show(float x, float y)
 	addChild(faceEye->sprite);
 	addChild(hairInner->sprite);
 	addChild(hairOuter->sprite);
-
-	if (hairBang1->sprite)
-	{
-		addChild(hairBang1->sprite);
-	}
+	addChild(hairBang1->sprite);
 
 	this->setPosition(x, y);
 }

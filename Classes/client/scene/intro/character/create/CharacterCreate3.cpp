@@ -261,6 +261,8 @@ void CharacterCreate3::updateEyeTextSprite(bool reset)
 	}
 
 	eyeTextSprite->setSpriteFrame("charcreate/create4/yan" + to_string(sexualCode ) + "_1-" + to_string(currentEyeIndex) + ".png");
+
+	this->roleModel->updateDress(EYE, (sexual == MALE ? MALE_FACE[currentEyeIndex - 1] : FEMALE_FACE[currentEyeIndex - 1]));
 }
 
 void CharacterCreate3::updateHairTextSprite(bool reset)
@@ -274,7 +276,7 @@ void CharacterCreate3::updateHairTextSprite(bool reset)
 	hairTextSprite->setSpriteFrame("charcreate/create4/toufa" + to_string(sexualCode) + "_1-" + to_string(currentHairIndex) + ".png");
 
 	this->roleModel->updateDress(HAIR_BANG1, (sexual == MALE ? MALE_HAIR_BANG1[currentHairIndex - 1] : FEMALE_HAIR_BANG1[currentHairIndex - 1]));
-	this->roleModel->updateDress(HAIR_BANG2, (sexual == MALE ? MALE_HAIR_BANG2[currentHairIndex - 1] : MALE_HAIR_BANG2[currentHairIndex - 1]));
+	this->roleModel->updateDress(HAIR_BANG2, (sexual == MALE ? MALE_HAIR_BANG2[currentHairIndex - 1] : FEMALE_HAIR_BANG2[currentHairIndex - 1]));
 	this->roleModel->updateDress(HAIR_INNERHAIR, (sexual == MALE ? MALE_HAIR_INNER[currentHairIndex - 1] : FEMALE_HAIR_INNER[currentHairIndex - 1]));
 	this->roleModel->updateDress(HAIR_OUTERHAIR, (sexual == MALE ? MALE_HAIR_OUTER[currentHairIndex - 1] : FEMALE_HAIR_OUTER[currentHairIndex - 1]));
 }

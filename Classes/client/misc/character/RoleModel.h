@@ -25,24 +25,26 @@ struct DressSprite
 	float x;
 	float y;
 	std::string spriteName;
+	Layer* layer;
 
-	DressSprite()
+	DressSprite(Layer* layer)
 	{
 		this->sprite = nullptr;
 		this->action = STAND;
 		this->x = 0;
 		this->y = 0;
+		this->layer = layer;
 	}
 
-	DressSprite(std::string id, E_PLAYER_ACTION action = STAND, float x = 0, float y = 0)
+	DressSprite(Layer* layer, std::string id, E_PLAYER_ACTION action = STAND, float x = 0, float y = 0)
 	{
+		this->layer = layer;
 		this->id = id;
 		this->x = x;
 		this->y = y;
-
-		this->spriteName = getSpriteName(id, action);
 		this->action = action;
 
+		this->spriteName = getSpriteName(id, action);
 		this->sprite = getSprite(this->spriteName, this->x, this->y, Vec2::ANCHOR_TOP_LEFT);
 		this->sprite->setLocalZOrder(Z_ORDER_ROLE);
 	}
@@ -54,8 +56,15 @@ struct DressSprite
 		if (frames > 1)
 		{
 			this->animation = createAnimation(getSpriteName(1, true), frames, 0.3f, true, true, true);
-			this->sprite->stopAllActions();
-			this->sprite->runAction(Animate::create(this->animation));
+			if (this->sprite)
+			{
+				if (sprite->getNumberOfRunningActions() > 0)
+				{
+					this->sprite->stopAllActions();
+				}
+
+				this->sprite->runAction(Animate::create(this->animation));
+			}
 		}
 	}
 
@@ -94,24 +103,42 @@ struct DressSprite
 				this->spriteName = getSpriteName(this->id, this->action);
 				if (sprite)
 				{
-					sprite->stopAllActions();
-					sprite->setSpriteFrame(getSpriteFrameByName(this->spriteName));
-
-					playAnimation(this->action);
+					if (sprite->getNumberOfRunningActions() > 0)
+					{
+						sprite->stopAllActions();
+					}
+					SpriteFrame* spriteFrame = getSpriteFrameByName(this->spriteName);
+					if (spriteFrame)
+					{
+						sprite->setSpriteFrame(spriteFrame);
+						sprite->setVisible(true);
+						playAnimation(this->action);
+					}
+					else
+					{
+						sprite->setVisible(false);
+					}
 				}
 				else
 				{
-					sprite = getSprite(this->spriteName, this->x, this->y, Vec2::ANCHOR_TOP_LEFT);
-				}
+					this->sprite = getSprite(this->spriteName, this->x, this->y, Vec2::ANCHOR_TOP_LEFT);
 
-				if (sprite)
-				{
-					sprite->setVisible(true);
+					if (!this->sprite)
+					{
+						this->sprite = Sprite::create();
+						this->sprite->setPosition(this->x, this->y);
+						this->sprite->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
+						this->sprite->setVisible(false);
+					}
+					else
+					{
+						this->sprite->setVisible(true);
+					}
 				}
 			}
 			else
 			{
-				sprite->setVisible(false);
+				this->sprite->setVisible(false);
 			}
 		}
 	}
