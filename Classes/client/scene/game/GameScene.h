@@ -5,7 +5,7 @@
 #include <cocos2d.h>
 USING_NS_CC;
 
-class GameScene : public cocos2d::Scene
+class GameScene : public cocos2d::Layer
 {
 public:
 	// there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -16,6 +16,8 @@ public:
 
 	// implement the "static create()" method manually
 	CREATE_FUNC(GameScene);
+
+	void update(float dt) override;
 };
 
 #endif
