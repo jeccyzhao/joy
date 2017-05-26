@@ -151,6 +151,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\client\manager\GameDataManager.cpp" />
     <ClCompile Include="..\Classes\client\manager\PlayerRoleManager.cpp" />
     <ClCompile Include="..\Classes\client\manager\ResourceManager.cpp" />
+    <ClCompile Include="..\Classes\client\manager\RoleCreationManager.cpp" />
     <ClCompile Include="..\Classes\client\misc\character\RoleModel.cpp" />
     <ClCompile Include="..\Classes\client\scene\game\GameScene.cpp" />
     <ClCompile Include="..\Classes\client\scene\intro\advice\AdviceScene.cpp" />
@@ -182,6 +183,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Client\Items\EquipmentItem.h" />
     <ClInclude Include="..\Classes\Client\Items\ItemBase.h" />
     <ClInclude Include="..\Classes\Client\Items\ItemManager.h" />
+    <ClInclude Include="..\Classes\client\manager\RoleCreationManager.h" />
     <ClInclude Include="..\Classes\client\manager\CursorManager.h" />
     <ClInclude Include="..\Classes\client\manager\GameDataManager.h" />
     <ClInclude Include="..\Classes\client\manager\PlayerRoleManager.h" />

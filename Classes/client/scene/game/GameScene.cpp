@@ -60,7 +60,7 @@ bool GameScene::init()
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 
 	auto gameDataMgr = GameDataManager::Get();
-	string mapName = "home";
+	string mapName = "baigu_stage002";
 	MapInfo *map = gameDataMgr->loadMapInfoByName(mapName);
 	if (map)
 	{
@@ -74,6 +74,8 @@ bool GameScene::init()
 			{
 				fullItemNo = "0" + fullItemNo;
 			}
+			
+			log("Adding item %s on map %s", fullItemNo.c_str(), mapName.c_str());
 
 			auto sprite = getSprite(mapName + "/" + fullItemNo + ".png", mapItem->x, mapItem->y); // , Vec2::ANCHOR_TOP_LEFT);
 			if (sprite)

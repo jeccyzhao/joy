@@ -207,6 +207,9 @@
     <ClCompile Include="..\Classes\client\manager\GameDataManager.cpp">
       <Filter>src\client\manager</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\client\manager\RoleCreationManager.cpp">
+      <Filter>src\client\manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -333,6 +336,9 @@
       <Filter>src\engine\extensions\rapidxml</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\client\manager\GameDataManager.h">
+      <Filter>src\client\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\manager\RoleCreationManager.h">
       <Filter>src\client\manager</Filter>
     </ClInclude>
   </ItemGroup>
