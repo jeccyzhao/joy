@@ -89,7 +89,7 @@ Vector<MapEntrance*> GameDataManager::loadMapEntranceByName(string mapNo)
 MapInfo* GameDataManager::loadMapInfoByName(string mapNo)
 {
 	string sql = "select map_id, map_no, map_name, map_width, map_height, role_x, role_y, map_music, debug from t_map where map_no='" + mapNo + "'";
-	log("Debug: loadMapInfoByName - %s", sql);
+	log("Debug: loadMapInfoByName - %s", sql.c_str());
 
 	auto mapInfo = new MapInfo();
 	vector<map<string, string>> data = m_dbConnection->searchData(sql);

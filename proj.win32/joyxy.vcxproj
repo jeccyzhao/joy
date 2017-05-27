@@ -148,6 +148,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Client\Items\EquipmentItem.cpp" />
     <ClCompile Include="..\Classes\Client\Items\ItemBase.cpp" />
     <ClCompile Include="..\Classes\client\manager\CursorManager.cpp" />
+    <ClCompile Include="..\Classes\client\manager\DressUpManager.cpp" />
     <ClCompile Include="..\Classes\client\manager\GameDataManager.cpp" />
     <ClCompile Include="..\Classes\client\manager\PlayerRoleManager.cpp" />
     <ClCompile Include="..\Classes\client\manager\ResourceManager.cpp" />
@@ -165,6 +166,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\client\scene\intro\server\ServerChannelScene.cpp" />
     <ClCompile Include="..\Classes\Client\Scene\LoadingScene.cpp" />
     <ClCompile Include="..\Classes\client\ui\ctrls\CursorTextField.cpp" />
+    <ClCompile Include="..\Classes\client\ui\layer\LoadingLayer.cpp" />
+    <ClCompile Include="..\Classes\client\ui\layer\MiniMapLayer.cpp" />
+    <ClCompile Include="..\Classes\client\ui\layer\SystemMenuLayer.cpp" />
     <ClCompile Include="..\Classes\Engine\3rdparty\shell.c" />
     <ClCompile Include="..\Classes\Engine\3rdparty\sqlite3.c" />
     <ClCompile Include="..\Classes\engine\extensions\crypto\base64\libb64.c" />
@@ -183,6 +187,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Client\Items\EquipmentItem.h" />
     <ClInclude Include="..\Classes\Client\Items\ItemBase.h" />
     <ClInclude Include="..\Classes\Client\Items\ItemManager.h" />
+    <ClInclude Include="..\Classes\client\manager\DressUpManager.h" />
     <ClInclude Include="..\Classes\client\manager\RoleCreationManager.h" />
     <ClInclude Include="..\Classes\client\manager\CursorManager.h" />
     <ClInclude Include="..\Classes\client\manager\GameDataManager.h" />
@@ -192,6 +197,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\client\misc\CursorData.h" />
     <ClInclude Include="..\Classes\Client\Misc\MapData.h" />
     <ClInclude Include="..\Classes\client\misc\PlayerData.h" />
+    <ClInclude Include="..\Classes\client\npc\NPCData.h" />
     <ClInclude Include="..\Classes\client\scene\game\GameScene.h" />
     <ClInclude Include="..\Classes\client\scene\intro\advice\AdviceScene.h" />
     <ClInclude Include="..\Classes\client\scene\intro\character\create\CharacterCreate2.h" />
@@ -204,6 +210,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\client\scene\intro\server\ServerChannelScene.h" />
     <ClInclude Include="..\Classes\Client\Scene\LoadingScene.h" />
     <ClInclude Include="..\Classes\client\ui\ctrls\CursorTextField.h" />
+    <ClInclude Include="..\Classes\client\ui\layer\LoadingLayer.h" />
+    <ClInclude Include="..\Classes\client\ui\layer\MiniMapLayer.h" />
+    <ClInclude Include="..\Classes\client\ui\layer\SystemMenuLayer.h" />
     <ClInclude Include="..\Classes\Engine\3rdparty\sqlite3.h" />
     <ClInclude Include="..\Classes\Engine\3rdparty\sqlite3ext.h" />
     <ClInclude Include="..\Classes\engine\extensions\crypto\base64\libb64.h" />

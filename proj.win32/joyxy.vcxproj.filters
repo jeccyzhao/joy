@@ -73,9 +73,6 @@
     <Filter Include="src\engine\extensions\crypto\sha1">
       <UniqueIdentifier>{57d01f5f-d5a1-43ad-b896-0142cd724be2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\client\ui\layer\menu">
-      <UniqueIdentifier>{93c00ec1-b8ca-4211-83f8-555eea141530}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\client\scene\intro">
       <UniqueIdentifier>{7ef7033b-3a03-44f8-9d53-47bba0c8cccc}</UniqueIdentifier>
     </Filter>
@@ -114,6 +111,9 @@
     </Filter>
     <Filter Include="src\engine\extensions\rapidxml">
       <UniqueIdentifier>{52922a13-7098-4ac1-bd94-493798d4ffe9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\libs">
+      <UniqueIdentifier>{70e5a4ef-654e-4b46-897d-af88e986b28c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -209,6 +209,18 @@
     </ClCompile>
     <ClCompile Include="..\Classes\client\manager\RoleCreationManager.cpp">
       <Filter>src\client\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\manager\DressUpManager.cpp">
+      <Filter>src\client\manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\ui\layer\LoadingLayer.cpp">
+      <Filter>src\client\ui\layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\ui\layer\SystemMenuLayer.cpp">
+      <Filter>src\client\ui\layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\ui\layer\MiniMapLayer.cpp">
+      <Filter>src\client\ui\layer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -340,6 +352,21 @@
     </ClInclude>
     <ClInclude Include="..\Classes\client\manager\RoleCreationManager.h">
       <Filter>src\client\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\manager\DressUpManager.h">
+      <Filter>src\client\manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\ui\layer\LoadingLayer.h">
+      <Filter>src\client\ui\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\npc\NPCData.h">
+      <Filter>src\client\npc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\ui\layer\SystemMenuLayer.h">
+      <Filter>src\client\ui\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\ui\layer\MiniMapLayer.h">
+      <Filter>src\client\ui\layer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

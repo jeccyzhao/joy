@@ -56,6 +56,7 @@ void DBUtil::openDBWithName(std::string aDataBaseName)
         errMsg = NULL;
     }
 
+	this->m_dbName = aDataBaseName;
 	log("Database connected.");
 }
  
@@ -294,7 +295,7 @@ std::vector<std::map<std::string, std::string> > DBUtil::searchData(std::string 
     std::vector<std::map<std::string, std::string>> vec;
      
     char* errMsg = NULL;
-    int result = sqlite3_exec(m_pDataBase, aSql.c_str(), searchDataCallback, &vec, &errMsg);
+	int result = sqlite3_exec(m_pDataBase, aSql.c_str(), searchDataCallback, &vec, &errMsg);
     if (result != SQLITE_OK) {
         log("searchData failed with error code: %d, message:%s", result, errMsg);
     }

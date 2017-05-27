@@ -1,6 +1,9 @@
 #include "GameScene.h"
 #include "client/Client.h"
-#include "client\manager\GameDataManager.h"
+#include "client/manager/GameDataManager.h"
+#include "client/ui/layer/SystemMenuLayer.h"
+#include "client/ui/layer/MiniMapLayer.h"
+#include "client/manager/CursorManager.h"
 
 USING_NS_CC;
 using namespace std;
@@ -27,6 +30,9 @@ bool GameScene::init()
 	{
 		return false;
 	}
+
+	addChild(SystemMenuLayer::create(), 9999);
+	addChild(MiniMapLayer::create(), 9999);
 
 	auto listener = EventListenerKeyboard::create();
 	listener->onKeyPressed = [](EventKeyboard::KeyCode keyCode, Event* event)
@@ -60,7 +66,7 @@ bool GameScene::init()
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 
 	auto gameDataMgr = GameDataManager::Get();
-	string mapName = "baigu_stage002";
+	string mapName = "home";
 	MapInfo *map = gameDataMgr->loadMapInfoByName(mapName);
 	if (map)
 	{
@@ -77,11 +83,20 @@ bool GameScene::init()
 			
 			log("Adding item %s on map %s", fullItemNo.c_str(), mapName.c_str());
 
-			auto sprite = getSprite(mapName + "/" + fullItemNo + ".png", mapItem->x, mapItem->y); // , Vec2::ANCHOR_TOP_LEFT);
+			auto sprite = getSprite(mapName + "/" + fullItemNo + ".png");
 			if (sprite)
 			{
+				sprite->setPosition(
+					designResolutionSize.width - mapItem->x - sprite->getContentSize().width,
+					designResolutionSize.height - mapItem->y - sprite->getContentSize().height);
+
 				addChild(sprite);
+				//break;
 			}
+			
+			log(map->playerX);
+			log(map->playerY);
+			//this->setPosition(-map->playerX, -map->playerY);
 		}
 
 		/*
@@ -101,6 +116,8 @@ bool GameScene::init()
 		}
 		*/
 	}
+
+	CursorManager::Get()->addCursorToLayer(this);
 
 	return true;
 }
