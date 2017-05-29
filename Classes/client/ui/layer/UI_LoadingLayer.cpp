@@ -1,4 +1,4 @@
-#include "LoadingLayer.h"
+#include "UI_LoadingLayer.h"
 #include "engine\util\GameUtils.h"
 
 LoadingLayer::LoadingLayer() {}

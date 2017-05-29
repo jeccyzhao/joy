@@ -115,6 +115,12 @@
     <Filter Include="src\libs">
       <UniqueIdentifier>{70e5a4ef-654e-4b46-897d-af88e986b28c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\demo">
+      <UniqueIdentifier>{92696b78-050c-4809-b17a-28ff295475de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\demo\TextInput">
+      <UniqueIdentifier>{58bbc780-8455-4e72-8692-0dc3a4381a5c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -213,13 +219,19 @@
     <ClCompile Include="..\Classes\client\manager\DressUpManager.cpp">
       <Filter>src\client\manager</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\client\ui\layer\LoadingLayer.cpp">
+    <ClCompile Include="..\Classes\demo\TextInputTest.cpp">
+      <Filter>src\demo\TextInput</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\ui\layer\UI_MapLayer.cpp">
       <Filter>src\client\ui\layer</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\client\ui\layer\SystemMenuLayer.cpp">
+    <ClCompile Include="..\Classes\client\ui\layer\UI_MiniMapLayer.cpp">
       <Filter>src\client\ui\layer</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\client\ui\layer\MiniMapLayer.cpp">
+    <ClCompile Include="..\Classes\client\ui\layer\UI_SysMenuLayer.cpp">
+      <Filter>src\client\ui\layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\ui\layer\UI_LoadingLayer.cpp">
       <Filter>src\client\ui\layer</Filter>
     </ClCompile>
   </ItemGroup>
@@ -356,16 +368,25 @@
     <ClInclude Include="..\Classes\client\manager\DressUpManager.h">
       <Filter>src\client\manager</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\client\ui\layer\LoadingLayer.h">
-      <Filter>src\client\ui\layer</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\client\npc\NPCData.h">
       <Filter>src\client\npc</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\client\ui\layer\SystemMenuLayer.h">
+    <ClInclude Include="..\Classes\demo\TextInputTest.h">
+      <Filter>src\demo\TextInput</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\ui\layer\LayerConstants.h">
       <Filter>src\client\ui\layer</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\client\ui\layer\MiniMapLayer.h">
+    <ClInclude Include="..\Classes\client\ui\layer\UI_MapLayer.h">
+      <Filter>src\client\ui\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\ui\layer\UI_MiniMapLayer.h">
+      <Filter>src\client\ui\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\ui\layer\UI_SysMenuLayer.h">
+      <Filter>src\client\ui\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\ui\layer\UI_LoadingLayer.h">
       <Filter>src\client\ui\layer</Filter>
     </ClInclude>
   </ItemGroup>

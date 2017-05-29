@@ -10,7 +10,7 @@ USING_NS_CC;
 using namespace std;
 using namespace cocos2d::ui;
 
-class SystemMenuLayer : public cocos2d::CCLayer
+class SystemMenuLayer : public cocos2d::Layer
 {
 public:
 	SystemMenuLayer();

@@ -10,7 +10,14 @@ USING_NS_CC;
 using namespace std;
 using namespace cocos2d::ui;
 
-class MiniMapLayer : public cocos2d::CCLayer
+static const int POSITION_X = 601;
+static const int POSITION_Y = designResolutionSize.height;
+static const int MINI_MAP_WIDTH = 200;
+static const int MINI_MAP_MIN_HEIGHT = 60;
+static const int MINI_MAP_MEDIUM_HEIGHT = 100;
+static const int MINI_MAP_MAX_HEIGHT = 150;
+
+class MiniMapLayer : public cocos2d::Layer
 {
 public:
 	MiniMapLayer();
@@ -22,6 +29,7 @@ public:
 
 private:
 	Sprite* m_bgSprite;
+	Sprite* m_mapSprite;
 };
 
 #endif

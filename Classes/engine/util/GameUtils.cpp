@@ -35,6 +35,16 @@ Sprite* getSprite(string filename, float x, float y, Vec2 anchorPoint)
 	return psprite;
 }
 
+string getFullItemNo(string itemNo, string placeHolder /* = "0" */ , int len /* = 8 */)
+{
+	string fullItemNo = itemNo;
+	while (fullItemNo.length() < len)
+	{
+		fullItemNo = placeHolder + fullItemNo;
+	}
+	return fullItemNo;
+}
+
 SpriteFrame* getSpriteFrameByName(const string spriteName)
 {
 	return SpriteFrameCache::getInstance()->getSpriteFrameByName(spriteName);

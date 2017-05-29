@@ -6,7 +6,7 @@
 USING_NS_CC;
 using namespace std;
 
-class LoadingLayer : public cocos2d::CCLayer
+class LoadingLayer : public cocos2d::Layer
 {
 public:
 	LoadingLayer();

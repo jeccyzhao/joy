@@ -20,6 +20,8 @@ using namespace cocos2d::ui;
 */
 Sprite* getSprite(string filename, float x = 0, float y = 0, Vec2 anchorPoint = Vec2::ZERO);
 
+string getFullItemNo(string itemNo, string placeHolder = "0", int len = 8);
+
 /**
 * Retrieves sprite frame by specified file from frame cache.
 *
