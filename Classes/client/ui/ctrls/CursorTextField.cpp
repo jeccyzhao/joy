@@ -1,258 +1,230 @@
 #include "CursorTextField.h"
 
+#define FONT_NAME                       "fonts/Yahei.ttf"
+#define FONT_SIZE                       20
+
 const static float DELTA = 0.5f;
 
-static int _calcCharCount(const char * pszText)
+static Rect getRect(Node * node)
 {
-	int n = 0;
-	char ch = 0;
-	while ((ch = *pszText))
-	{
-		CC_BREAK_IF(!ch);
-		if (0x80 != (0xC0 & ch))
-		{
-			++n;
-		}
-
-		++pszText;
-	}
-	return n;
+	Rect rc;
+	rc.origin = node->getPosition();
+	rc.size = node->getContentSize();
+	rc.origin.x -= rc.size.width / 2;
+	rc.origin.y -= rc.size.height / 2;
+	return rc;
 }
 
-CursorTextField::CursorTextField()
+CursorTextField::CursorTextField() 
+:_trackNode(0)
 {
 	TextFieldTTF();
 
-	m_pCursorSprite = NULL;
-	m_pCursorAction = NULL;
-	m_pInputText = NULL;
+	// Register Touch Event
+	auto listener = EventListenerTouchOneByOne::create();
+	listener->onTouchBegan = CC_CALLBACK_2(CursorTextField::onTouchBegan, this);
+	listener->onTouchEnded = CC_CALLBACK_2(CursorTextField::onTouchEnded, this);
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 
+	m_pInputText = NULL;
 	m_isPassword = false;
-	m_charLimit = 30;
+	m_maxLength = 0;
 }
 
 CursorTextField::~CursorTextField()
 {
-	CC_SAFE_DELETE(m_pCursorSprite);
-	//CC_SAFE_DELETE(m_pCursorAction);
 	CC_SAFE_DELETE(m_pInputText);
+}
+
+bool CursorTextField::onTouchBegan(Touch  *touch, Event  *event)
+{
+	CCLOG("++++++++++++++++++++++++++++++++++++++++++++");
+	_beginPos = touch->getLocation();
+	return true;
+}
+
+CursorTextField* CursorTextField::textFieldWithPlaceHolder(const char *placeholder,  float fontSize, const char *fontName, Vec2 anchorPoint)
+{
+	CursorTextField *pRet = new CursorTextField();
+	if (pRet && pRet->initWithPlaceHolder(placeholder, fontName, fontSize))
+	{
+		pRet->setAnchorPoint(anchorPoint);
+		pRet->autorelease();
+		return pRet;
+	}
+
+	CC_SAFE_DELETE(pRet);
+	return NULL;
+}
+
+void CursorTextField::onTouchEnded(Touch  *touch, Event  *event)
+{
+	if (!_trackNode)
+	{
+		return;
+	}
+
+	auto endPos = touch->getLocation();
+
+	float delta = 5.0f;
+	if (std::abs(endPos.x - _beginPos.x) > delta
+		|| std::abs(endPos.y - _beginPos.y) > delta)
+	{
+		// not click
+		_beginPos.x = _beginPos.y = -1;
+		return;
+	}
+
+	// decide the trackNode is clicked.
+	Rect rect;
+	rect.size = &m_designedSize != NULL ? m_designedSize : _trackNode->getContentSize();
+
+	auto clicked = isScreenPointInRect(endPos, Camera::getVisitingCamera(), _trackNode->getWorldToNodeTransform(), rect, nullptr);
+	this->onClickTrackNode(clicked);
+	CCLOG("----------------------------------");
+}
+
+void CursorTextField::onClickTrackNode(bool bClicked)
+{
+	auto pTextField = (TextFieldTTF*)_trackNode;
+	if (bClicked)
+	{
+		// TextFieldTTFTest be clicked
+		CCLOG("TextFieldTTFDefaultTest:TextFieldTTF attachWithIME");
+		pTextField->attachWithIME();
+	}
+	else
+	{
+		// TextFieldTTFTest not be clicked
+		CCLOG("TextFieldTTFDefaultTest:TextFieldTTF detachWithIME");
+		pTextField->detachWithIME();
+	}
+}
+
+void CursorTextField::keyboardWillShow(IMEKeyboardNotificationInfo& info)
+{
+	CCLOG("TextInputTest:keyboardWillShowAt(origin:%f,%f, size:%f,%f)",
+		info.end.origin.x, info.end.origin.y, info.end.size.width, info.end.size.height);
+
+	if (!_trackNode)
+	{
+		return;
+	}
+
+	auto rectTracked = getRect(_trackNode);
+	CCLOG("TextInputTest:trackingNodeAt(origin:%f,%f, size:%f,%f)",
+		rectTracked.origin.x, rectTracked.origin.y, rectTracked.size.width, rectTracked.size.height);
+
+	// if the keyboard area doesn't intersect with the tracking node area, nothing need to do.
+	if (!rectTracked.intersectsRect(info.end))
+	{
+		return;
+	}
+
+	// assume keyboard at the bottom of screen, calculate the vertical adjustment.
+	float adjustVert = info.end.getMaxY() - rectTracked.getMinY();
+	CCLOG("TextInputTest:needAdjustVerticalPosition(%f)", adjustVert);
+
+	// move all the children node of KeyboardNotificationLayer
+	auto& children = getChildren();
+	Node * node = 0;
+	ssize_t count = children.size();
+	Vec2 pos;
+	for (int i = 0; i < count; ++i)
+	{
+		node = children.at(i);
+		pos = node->getPosition();
+		pos.y += adjustVert;
+		node->setPosition(pos);
+	}
+}
+
+void CursorTextField::onExit()
+{
+	TextFieldTTF::onExit();
 }
 
 void CursorTextField::onEnter()
 {
 	TextFieldTTF::onEnter();
-	//TouchDispatcher::sharedDispatcher()->addTargetedDelegate(this, 0, false);
-	this->setDelegate(this);
-}
-
-CursorTextField * CursorTextField::textFieldWithPlaceHolder(const char *placeholder, const char *fontName, float fontSize, Vec2 anchorPoint)
-{
-	CursorTextField *pRet = new CursorTextField();
-
-	if (pRet && pRet->initWithPlaceHolder("", fontName, fontSize))
-	{
-		pRet->autorelease();
-		if (placeholder)
-		{
-			pRet->setPlaceHolder(placeholder);
-		}
-
-		pRet->setAnchorPoint(anchorPoint);
-		pRet->initCursorSprite(fontSize);
-		pRet->m_pCursorSprite->setVisible(true);
-
-		return pRet;
-	}
-
-	CC_SAFE_DELETE(pRet);
-
-	return NULL;
-}
-
-void CursorTextField::initCursorSprite(int height)
-{
-	// 初始化光标
-	const int column = 4;
-	int pixels[20][column];
-	for (int i = 0; i< height; ++i) {
-		for (int j = 0; j<column; ++j) {
-			pixels[i][j] = 0xffffffff;
-		}
-	}
-
-	Texture2D *texture = new Texture2D();
-
-	// 指针，指针长度，像素类型，像素宽度，高度，内容大小
-	texture->initWithData(pixels, 20, Texture2D::PixelFormat::RGB888, 1, height, Size(column, height));
-
-	m_pCursorSprite = Sprite::createWithTexture(texture);
-	Size winSize = getContentSize();
-	m_cursorPos = Vec2(0, winSize.height / 2);
-	m_pCursorSprite->setPosition(m_cursorPos);
-	this->addChild(m_pCursorSprite);
-
-	m_pCursorAction = RepeatForever::create((ActionInterval *)Sequence::create(FadeOut::create(0.25f), FadeIn::create(0.25f), NULL));
-	m_pCursorSprite->runAction(m_pCursorAction);
-
+	
 	m_pInputText = new std::string();
-}
 
-bool CursorTextField::ccTouchBegan(cocos2d::CCTouch *pTouch, cocos2d::CCEvent *pEvent)
-{
-	m_beginPos = pTouch->getLocationInView();
-	m_beginPos = Director::getInstance()->convertToGL(m_beginPos);
-	return true;
-}
-
-Rect CursorTextField::getRect()
-{
-	Size size = getContentSize();
-	if (&m_designedSize != NULL) {
-		size = getDesignedSize();
-	}
-	else {
-		size = getContentSize();
-	}
-
-	Rect rect = Rect(getPosition().x - size.width / 2.0f, getPosition().y - size.height / 2.0f, size.width, size.height);
-	return  rect;
-}
-
-//设置触摸弹出输入法的区域大小
-void CursorTextField::setDesignedSize(cocos2d::Size size)
-{
-	m_designedSize = size;
-}
-
-Size CursorTextField::getDesignedSize()
-{
-	return m_designedSize;
-}
-
-bool CursorTextField::isInTextField(cocos2d::Touch *pTouch)
-{
-	Point pToushPos = pTouch->getLocation();
-	return getRect().containsPoint(pToushPos);
-}
-
-void CursorTextField::ccTouchEnded(cocos2d::Touch *pTouch, cocos2d::CCEvent *pEvent)
-{
-	Point endPos = pTouch->getLocationInView();
-	endPos = Director::getInstance()->convertToGL(endPos);
-
-	// 判断是否为点击事件
-	if (::abs(endPos.x - m_beginPos.x) > DELTA ||
-		::abs(endPos.y - m_beginPos.y))
+	if (this->m_isPassword)
 	{
-		// 不是点击事件
-		m_beginPos.x = m_beginPos.y = -1;
-		return;
+		this->setSecureTextEntry(true);
 	}
 
-	log("width: %f, height: %f.", getContentSize().width, getContentSize().height);
+	this->setDelegate(this);
 
-	// 判断是打开输入法还是关闭输入法
-	isInTextField(pTouch) ? openIME() : closeIME();
+	_trackNode = this;
 }
 
-bool CursorTextField::onTextFieldAttachWithIME(cocos2d::TextFieldTTF *pSender)
+bool CursorTextField::onTextFieldAttachWithIME(TextFieldTTF * sender)
 {
-	if (m_pInputText->empty()) {
+	if (m_pInputText->empty()) 
+	{
 		return false;
 	}
 
-	m_pCursorSprite->setPosition(Vec2(getContentSize().width + 1, getContentSize().height / 2));
 	return false;
 }
 
-bool CursorTextField::onTextFieldInsertText(cocos2d::TextFieldTTF *pSender, const char *text, int nLen)
+bool CursorTextField::onTextFieldDetachWithIME(TextFieldTTF * sender)
 {
-	CCLOG("Width: %f", pSender->getContentSize().width);
-	CCLOG("Text: %s", text);
-	CCLOG("Length: %d", nLen);
+	return false;
+}
 
-	std::string tempStr = m_pInputText->substr();
-	tempStr.append(text);
-	if (tempStr.length() > m_charLimit) 
+bool CursorTextField::onTextFieldInsertText(TextFieldTTF * sender, const char * text, size_t nLen)
+{
+	// if insert enter, treat as default to detach with ime
+	if ('\n' == *text)
+	{
+		return false;
+	}
+
+	if (m_maxLength > 0 && sender->getCharCount() >= m_maxLength)
 	{
 		return true;
 	}
 
 	m_pInputText->append(text);
-	setString(m_pInputText->c_str(), m_pInputText->c_str());
-	m_pCursorSprite->setPosition(Vec2(getContentSize().width + 1, getContentSize().height / 2));
 
+	return false;
+}
+
+bool CursorTextField::onDraw(cocos2d::TextFieldTTF*  sender)
+{
 	return true;
 }
 
-bool CursorTextField::onTextFieldDeleteBackward(cocos2d::TextFieldTTF *pSender, const char *delText, int nLen)
+void CursorTextField::setPassword(bool passwordMode)
+{
+	this->m_isPassword = passwordMode;
+}
+
+bool CursorTextField::onTextFieldDeleteBackward(TextFieldTTF * sender, const char * delText, size_t nLen)
 {
 	m_pInputText->resize(m_pInputText->size() - nLen);
-	setString(m_pInputText->c_str(), m_pInputText->c_str());
-
-	m_pCursorSprite->setPosition(Vec2(getContentSize().width + 1, getContentSize().height / 2));
-
-	if (m_pInputText->empty()) 
-	{
-		m_pCursorSprite->setPosition(Vec2(1, getContentSize().height / 2));
-	}
-
 	return false;
 }
 
-bool CursorTextField::onTextFieldDetachWithIME(cocos2d::TextFieldTTF *pSender)
+void CursorTextField::setMaxLength(unsigned int len)
 {
-	return false;
+	this->m_maxLength = len;
 }
 
-void CursorTextField::openIME()
+bool CursorTextField::isPassword() 
 {
-	m_pCursorSprite->setVisible(true);
-	this->attachWithIME();
+	return this->m_isPassword;
 }
 
-void CursorTextField::closeIME()
+void CursorTextField::setDesignedSize(Size size)
 {
-	m_pCursorSprite->setVisible(false);
-	this->detachWithIME();
+	this->m_designedSize = size;
 }
 
-void CursorTextField::onExit()
+Size CursorTextField::getDesignedSize()
 {
-	this->detachWithIME();
-	TextFieldTTF::onExit();
-	//CCTouchDispatcher::sharedDispatcher()->removeDelegate(this);
-}
-
-void CursorTextField::setString(const char *displayTx, const char* inputTx)
-{
-	CC_SAFE_DELETE(m_pInputText);
-
-	if (inputTx)
-	{
-		m_pInputText = new std::string(inputTx);
-	}
-	else
-	{
-		m_pInputText = new std::string;
-	}
-
-	/*
-	// if there is no input text, display placeholder instead
-	if (!m_pInputText->length())
-	{
-		LabelTTF::setString(m_pPlaceHolder->c_str());
-	}
-	else
-	{
-		CCLabelTTF::setString(displayTx);
-	}
-	*/
-	//    m_nCharCount = _calcCharCount(m_pInputText->c_str());
-}
-
-void CursorTextField::setColor(const Color3B& color3)
-{
-	updateColor();
-	m_pCursorSprite->setColor(color3);
+	return this->m_designedSize;
 }

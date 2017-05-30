@@ -97,28 +97,11 @@ bool CharacterCreate3::init()
 	addChild(createButton(560, designResolutionSize.height - 222, "charcreate/create4/right_1", [this](Ref* sender) { onEyeButtonClick(1);  }));
 	addChild(eyeTextSprite);
 
-	//CursorTextField* nameInput = CursorTextField::textFieldWithPlaceHolder("", "Arial", 12);
-	//nameInput->setPosition(395, designResolutionSize.height - 139);
-	//addChild(nameInput);
-
-	/* Create the textfield
-	TextField* textField = TextField::create("input words here", "Arial", 12);
-	textField->setMaxLengthEnabled(true);
-	textField->setMaxLength(30);
-	textField->setCursorEnabled(true);
-	textField->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
-	textField->setPosition(Vec2(395, designResolutionSize.height - 139));
-	addChild(textField);
-	*/
-
-	/*
-	TextFieldTTF* textEdit = TextFieldTTF::textFieldWithPlaceHolder("Please input your name:","Arial", 12);
-	textEdit->setPosition(395, designResolutionSize.height - 139);
-	textEdit->attachWithIME();
-	textEdit->setAnchorPoint(Vec2::ANCHOR_TOP_LEFT);
-	textEdit->setContentSize(Size(170, 20));
-	addChild(textEdit);
-	*/
+	nameInput = CursorTextField::textFieldWithPlaceHolder(" ");
+	nameInput->setPosition(395, designResolutionSize.height - 139);
+	nameInput->setDesignedSize(Size(170, 20));
+	nameInput->setMaxLength(20);
+	addChild(nameInput);
 
 	addChild(getSprite("charcreate/create4/zhiye_1-1.png", 0, designResolutionSize.height, Vec2::ANCHOR_TOP_LEFT));
 	addPreButtonToLayer(this);

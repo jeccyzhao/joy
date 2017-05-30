@@ -2,8 +2,8 @@
 
 USING_NS_CC;
 
-#define FONT_NAME                       "fonts/Thonburi.ttf"
-#define FONT_SIZE                       36
+#define FONT_NAME                       "fonts/Yahei.ttf"
+#define FONT_SIZE                       20
 
 static Rect getRect(Node * node)
 {

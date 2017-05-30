@@ -6,6 +6,8 @@
 #include "client\scene\intro\character\create\CharacterCreate2.h"
 #include "client\scene\intro\login\LoginScene.h"
 #include "client\scene\game\GameScene.h"
+#include "client\ui\ctrls\CursorTextField.h"
+#include "demo\TextInputTest.h"
 #include "client\Client.h"
 #include "engine\util\GameUtils.h"
 
@@ -86,8 +88,10 @@ bool AppDelegate::applicationDidFinishLaunching()
 	FileUtils::getInstance()->addSearchPath("res");
 
     // create a scene. it's an autorelease object
-    //auto scene = LoadingScene::createScene("ui/ui-", 0);
-	auto scene = GameScene::createScene();
+    auto scene = CharacterCreate3::createScene();
+	//auto scene = GameScene::createScene();
+
+	//auto scene = TextFieldTTFDefaultTest::create();
 
     // run
     director->runWithScene(scene);

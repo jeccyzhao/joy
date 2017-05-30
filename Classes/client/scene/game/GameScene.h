@@ -6,6 +6,11 @@
 #include "client/ui/layer/UI_SysMenuLayer.h"
 #include "client/ui/layer/UI_MiniMapLayer.h"
 #include "client/ui/layer/UI_MapLayer.h"
+#include "client/ui/layer/UI_ToolBarLayer.h"
+#include "client/ui/layer/UI_PlayerTagLayer.h"
+#include "client/ui/layer/UI_LoadingLayer.h"
+#include "client/ui/layer/LayerConstants.h"
+#include "client/ui/ctrls/CursorTextField.h"
 #include "client/manager/CursorManager.h"
 #include "client/Client.h"
 
@@ -25,10 +30,12 @@ public:
 
 	void update(float dt) override;
 private:
-	MiniMapLayer* m_miniMapLayer;
-	SystemMenuLayer* m_sysMenuLayer;
-	MapLayer* m_mapLayer;
-
+	MiniMapLayer*		m_miniMapLayer;
+	SystemMenuLayer*	m_sysMenuLayer;
+	MapLayer*			m_mapLayer;
+	ToolBarLayer*		m_toolBarLayer;
+	PlayerTagLayer*		m_playerTagLayer;
+	LoadingLayer*		m_loadingLayer;
 };
 
 #endif

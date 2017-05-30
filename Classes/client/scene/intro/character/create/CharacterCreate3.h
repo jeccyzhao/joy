@@ -18,6 +18,8 @@ using namespace cocos2d::ui;
 #define NUM_FRAMES_FEMALE_HAIR	9;
 #define NUM_FRAMES_FEMALE_EYE	6;
 
+class CursorTextField;
+
 class CharacterCreate3 : public cocos2d::Layer, CharacterCreateBase
 {
 public:
@@ -44,6 +46,7 @@ private:
 	static E_PLAYER_JOB job;
 	Button* createBtn;
 	RoleModel* roleModel;
+	CursorTextField* nameInput;
 
 	Sprite* sexTextSprite;
 	Sprite* eyeTextSprite;
@@ -61,6 +64,5 @@ private:
 	void updateSexTextSprite();
 	void updateEyeTextSprite(bool reset = false);
 	void updateHairTextSprite(bool reset = false);
-
 };
 #endif

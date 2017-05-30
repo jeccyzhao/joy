@@ -3,6 +3,10 @@
 #ifndef LAYER_CONST_H
 #define LAYER_CONST_H
 
-
+#define UI_LAYER_MAP		9996
+#define UI_LAYER_CHARACTER	9997
+#define UI_LAYER_MAINUI		9998
+#define UI_LAYER_DIALOG		9999
+#define UI_LAYER_LOADING	10000
 
 #endif

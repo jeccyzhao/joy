@@ -103,9 +103,6 @@
     <Filter Include="src\client\scene\intro\advice">
       <UniqueIdentifier>{48de31e8-bfbc-4f0d-a556-436d8108a20d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\client\ui\ctrls">
-      <UniqueIdentifier>{576e4931-6fde-46e3-9981-cba36461de0c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\client\misc\character">
       <UniqueIdentifier>{6aead3b8-4749-44d1-b344-b9592983e4e2}</UniqueIdentifier>
     </Filter>
@@ -120,6 +117,9 @@
     </Filter>
     <Filter Include="src\demo\TextInput">
       <UniqueIdentifier>{58bbc780-8455-4e72-8692-0dc3a4381a5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\client\ui\control">
+      <UniqueIdentifier>{576e4931-6fde-46e3-9981-cba36461de0c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -205,7 +205,7 @@
       <Filter>src\client\scene\intro\character\create</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\client\ui\ctrls\CursorTextField.cpp">
-      <Filter>src\client\ui\ctrls</Filter>
+      <Filter>src\client\ui\control</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\client\misc\character\RoleModel.cpp">
       <Filter>src\client\misc\character</Filter>
@@ -232,6 +232,15 @@
       <Filter>src\client\ui\layer</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\client\ui\layer\UI_LoadingLayer.cpp">
+      <Filter>src\client\ui\layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\ui\layer\UI_ToolBarLayer.cpp">
+      <Filter>src\client\ui\layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\ui\layer\UI_NpcBubbleLayer.cpp">
+      <Filter>src\client\ui\layer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\client\ui\layer\UI_PlayerTagLayer.cpp">
       <Filter>src\client\ui\layer</Filter>
     </ClCompile>
   </ItemGroup>
@@ -342,7 +351,7 @@
       <Filter>src\client\scene\intro\character\create</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\client\ui\ctrls\CursorTextField.h">
-      <Filter>src\client\ui\ctrls</Filter>
+      <Filter>src\client\ui\control</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\client\misc\character\RoleModel.h">
       <Filter>src\client\misc\character</Filter>
@@ -387,6 +396,15 @@
       <Filter>src\client\ui\layer</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\client\ui\layer\UI_LoadingLayer.h">
+      <Filter>src\client\ui\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\ui\layer\UI_ToolBarLayer.h">
+      <Filter>src\client\ui\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\ui\layer\UI_NpcBubbleLayer.h">
+      <Filter>src\client\ui\layer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\client\ui\layer\UI_PlayerTagLayer.h">
       <Filter>src\client\ui\layer</Filter>
     </ClInclude>
   </ItemGroup>

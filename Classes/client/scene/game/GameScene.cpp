@@ -28,12 +28,22 @@ bool GameScene::init()
 
 	this->m_sysMenuLayer = SystemMenuLayer::create();
 	this->m_miniMapLayer = MiniMapLayer::create();
+	this->m_toolBarLayer = ToolBarLayer::create();
 	this->m_mapLayer = MapLayer::create();
 	this->m_mapLayer->loadMap("home");
+	this->m_playerTagLayer = PlayerTagLayer::create();
 
-	addChild(m_mapLayer, 9998);
-	addChild(m_sysMenuLayer, 9999);
-	addChild(m_miniMapLayer, 9999);
+	/*
+	addChild(m_mapLayer,		UI_LAYER_MAP);
+	addChild(m_sysMenuLayer,	UI_LAYER_MAINUI);
+	addChild(m_miniMapLayer,	UI_LAYER_MAINUI);
+	addChild(m_toolBarLayer,	UI_LAYER_MAINUI);
+	addChild(m_playerTagLayer,	UI_LAYER_MAINUI);
+	*/
+
+	auto textFiled = CursorTextField::textFieldWithPlaceHolder(""); 
+	textFiled->setPosition(100, 200);
+	addChild(textFiled);
 
 	CursorManager::Get()->addCursorToLayer(this);
 

@@ -169,7 +169,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\client\ui\layer\UI_LoadingLayer.cpp" />
     <ClCompile Include="..\Classes\client\ui\layer\UI_MapLayer.cpp" />
     <ClCompile Include="..\Classes\client\ui\layer\UI_MiniMapLayer.cpp" />
+    <ClCompile Include="..\Classes\client\ui\layer\UI_NpcBubbleLayer.cpp" />
+    <ClCompile Include="..\Classes\client\ui\layer\UI_PlayerTagLayer.cpp" />
     <ClCompile Include="..\Classes\client\ui\layer\UI_SysMenuLayer.cpp" />
+    <ClCompile Include="..\Classes\client\ui\layer\UI_ToolBarLayer.cpp" />
     <ClCompile Include="..\Classes\demo\TextInputTest.cpp" />
     <ClCompile Include="..\Classes\Engine\3rdparty\shell.c" />
     <ClCompile Include="..\Classes\Engine\3rdparty\sqlite3.c" />
@@ -216,7 +219,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\client\ui\layer\UI_LoadingLayer.h" />
     <ClInclude Include="..\Classes\client\ui\layer\UI_MapLayer.h" />
     <ClInclude Include="..\Classes\client\ui\layer\UI_MiniMapLayer.h" />
+    <ClInclude Include="..\Classes\client\ui\layer\UI_NpcBubbleLayer.h" />
+    <ClInclude Include="..\Classes\client\ui\layer\UI_PlayerTagLayer.h" />
     <ClInclude Include="..\Classes\client\ui\layer\UI_SysMenuLayer.h" />
+    <ClInclude Include="..\Classes\client\ui\layer\UI_ToolBarLayer.h" />
     <ClInclude Include="..\Classes\demo\TextInputTest.h" />
     <ClInclude Include="..\Classes\Engine\3rdparty\sqlite3.h" />
     <ClInclude Include="..\Classes\Engine\3rdparty\sqlite3ext.h" />
